@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "robin-game",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
