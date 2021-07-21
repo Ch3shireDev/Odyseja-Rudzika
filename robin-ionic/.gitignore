@@ -29,6 +29,3 @@ npm-debug.log*
 /platforms
 /plugins
 /www
-.vscode
-robin-game/node_modules
-**/node_modules
