@@ -19,11 +19,9 @@ jobs:
           uses: actions/setup-node@v1
           with:
               node-version: 13.x
-        - name: Change dir
-          run: cd robin-game
           
-        - name: Install Cordova
-          run: npm install -g cordova
+        - name: Install Capacitor
+          run: npm install -g capacitor
 
         - name: Install Ionic
           run: npm install -g @ionic/cli
