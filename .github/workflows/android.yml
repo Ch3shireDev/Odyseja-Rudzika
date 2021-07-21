@@ -4,6 +4,8 @@ jobs:
   build:
     name: Build APK
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./robin-game
     steps:
         - name: Checkout source
           uses: actions/checkout@v2
