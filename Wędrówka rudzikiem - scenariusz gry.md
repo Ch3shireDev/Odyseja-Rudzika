@@ -6,7 +6,7 @@ Poniżej opisana jest podstawowa najprostsza wersja gry, w drugiej części zapr
 
 ## Główne założenia
 
-Gra dzieje się w czasie rzeczywistym, jesienią (1 września - 15 grudnia) rudziki wędrują ku zimowiskom, wiosną (1 lutego-30 kwietnia) ku lęgowiskom.
+Gra dzieje się w czasie rzeczywistym, jesienią (1 września - 15 grudnia) rudziki wędrują ku zimowiskom, wiosną (1 lutego - 30 kwietnia) ku lęgowiskom.
 
 Gracz codziennie podejmuje jedną decyzję. Dziennie gra zajmuje od 30 sekund do 4 minut.
 
@@ -14,10 +14,10 @@ Konieczna jest systematyczność: opuszczenie jednego czy dwu dni nie ma większ
 
 Są możliwe tylko cztery rodzaje decyzji:
 
-- żeruj intensywnie,
-- żeruj na utrzymanie kondycji,
-- leć,
-- zmień żerowisko.
+* żeruj intensywnie, 
+* żeruj na utrzymanie kondycji, 
+* leć, 
+* zmień żerowisko.
 
 Jednak decyzje podejmowane są na podstawie dość złożonych przesłanek, które wynikają zarówno z czynników losowych (pogoda danego dnia, żerowisko na którym wylądowałeś), z czynników zmieniających się w czasie (np. data) jak i z poprzednich decyzji (stopień rezerw jakie zgromadził rudzik).
 
@@ -35,8 +35,8 @@ Rudzik, jak większość małych ptaków jest nocnym wędrowcą. Wędrówka jest
 
 Gracz ma do dyspozycji dwa widoki ekranu:
 
-- mapę Europy z zaznaczonymi zimowiskami, trasami wędrówki i lęgowiskami a także aktualną pozycja gracza i pozycje innych graczy.
-- planszę ze swoim rudzikiem, gdzie może zobaczyć w jakiej jest on kondycji, jakie są warunki żerowania, pogoda itp., a także gdzie podejmuje decyzję co do jego poczynań na następne 24 godziny.
+* mapę Europy z zaznaczonymi zimowiskami, trasami wędrówki i lęgowiskami a także aktualną pozycja gracza i pozycje innych graczy.
+* planszę ze swoim rudzikiem, gdzie może zobaczyć w jakiej jest on kondycji, jakie są warunki żerowania, pogoda itp., a także gdzie podejmuje decyzję co do jego poczynań na następne 24 godziny.
 
 ## Zmienne i skutki podejmowanych decyzji
 
@@ -61,9 +61,9 @@ Wiatr jest zmienną losową ale z różnymi prawdopodobieństwami poszczególnyc
 
 ## Jakość żerowiska (od 0 do 3)
 
-- Bardzo słabe żerowisko (0) powoduje chudnięcie i koniecznie trzeba go zmienić.
-- Słabe żerowisko (1) umożliwia utrzymanie dotychczasowej kondycji i może być tylko miejscem przeczekania złej pogody,
-- żerowiska średnie do bardzo dobrego (2 i 3) umożliwiają przybieranie na wadze.
+* Bardzo słabe żerowisko (0) powoduje chudnięcie i koniecznie trzeba go zmienić.
+* Słabe żerowisko (1) umożliwia utrzymanie dotychczasowej kondycji i może być tylko miejscem przeczekania złej pogody, 
+* żerowiska średnie do bardzo dobrego (2 i 3) umożliwiają przybieranie na wadze.
 
 Jakość żerowiska jest zmienną losową.
 
@@ -77,10 +77,10 @@ Jeśli rudzik na swojej drodze napotka góry, lub morze które musi przekroczyć
 
 Decyzja:
 
-- żeruj intensywnie - zwiększasz swoje otłuszczenie od o 0.5 do 1 punktu na dobę. W ten sposób przygotowujesz się do lotu.
-- żeruj na utrzymanie kondycji - nie zmieniasz swojego otłuszczenia jeśli warunki na to pozwalają, albo zmieniasz go najmniej jak to możliwe. To sposób na przeczekanie złej pogody.
-- leć - jeśli masz zapas tłuszczu na poziomie 2 możesz lecieć. Jednocześnie określasz ile tłuszczu chcesz mieć na koniec przelotu. Dystans zależy od ilości tłuszczu przeznaczonej na zużycie, siły i kierunku wiatru oraz ewentualnych opadów. Czasami opłaca się poczekać - może następnej nocy pogoda się poprawi.
-- zmień żerowisko - jeśli trafiłeś na złe żerowisko - możesz je zmienić co kosztuje 0.5 punktu tłuszczu.
+* żeruj intensywnie - zwiększasz swoje otłuszczenie od o 0.5 do 1 punktu na dobę. W ten sposób przygotowujesz się do lotu.
+* żeruj na utrzymanie kondycji - nie zmieniasz swojego otłuszczenia jeśli warunki na to pozwalają, albo zmieniasz go najmniej jak to możliwe. To sposób na przeczekanie złej pogody.
+* leć - jeśli masz zapas tłuszczu na poziomie 2 możesz lecieć. Jednocześnie określasz ile tłuszczu chcesz mieć na koniec przelotu. Dystans zależy od ilości tłuszczu przeznaczonej na zużycie, siły i kierunku wiatru oraz ewentualnych opadów. Czasami opłaca się poczekać - może następnej nocy pogoda się poprawi.
+* zmień żerowisko - jeśli trafiłeś na złe żerowisko - możesz je zmienić co kosztuje 0.5 punktu tłuszczu.
 
 Jeśli w danej dobie gracz nie podejmie żadnej decyzji (nie odwiedzi strony z grą) rudzik automatycznie wybiera opcję "żeruj na utrzymanie kondycji".
 
@@ -108,16 +108,16 @@ Dla przykładu skrzydło zaostrzone powoduje zwiększenie dystansu przelotu o 25
 
 ### Otłuszczenie
 
-- -0.5 (brak tłuszczu, naruszenie narządów wewnętrznych) - wydłuża dwukrotnie czas przytycia o 0.5 jednostki. Przy żerowisku 0 oznacza śmierć w następnej rundzie, a przy żerowisku 1 wegetację do nadejścia zimy. Uniemożliwia zmianę żerowiska.
-- 0 do 1,5 (brak tłuszczu lub niski poziom tłuszczu) - możliwe normalne żerowanie i zmiana żerowiska.
-- 2 - 5 (umiarkowany do bardzo wysoki poziom tłuszczu) - możliwe normalne żerowanie i przelot na dystans 50 km za każde zużyte 0.5 punktu tłuszczu. Samo wystartowanie wymaga 0.5 punktu tłuszczu.
+* -0.5 (brak tłuszczu, naruszenie narządów wewnętrznych) - wydłuża dwukrotnie czas przytycia o 0.5 jednostki. Przy żerowisku 0 oznacza śmierć w następnej rundzie, a przy żerowisku 1 wegetację do nadejścia zimy. Uniemożliwia zmianę żerowiska.
+* 0 do 1, 5 (brak tłuszczu lub niski poziom tłuszczu) - możliwe normalne żerowanie i zmiana żerowiska.
+* 2 - 5 (umiarkowany do bardzo wysoki poziom tłuszczu) - możliwe normalne żerowanie i przelot na dystans 50 km za każde zużyte 0.5 punktu tłuszczu. Samo wystartowanie wymaga 0.5 punktu tłuszczu.
 
-Przykład: Jeśli gracz ma tłuszcz 3 i chce zachować 0.5 tłuszczu na moment wylądowania to przeleci 200 km (zużyje 0.5 tłuszczu za każde 50 kilometrów i 0.5 na wystartowanie, czyli łącznie 2,5 punktu). Wartość ta jest modyfikowana przez warunki pogodowe.
+Przykład: Jeśli gracz ma tłuszcz 3 i chce zachować 0.5 tłuszczu na moment wylądowania to przeleci 200 km (zużyje 0.5 tłuszczu za każde 50 kilometrów i 0.5 na wystartowanie, czyli łącznie 2, 5 punktu). Wartość ta jest modyfikowana przez warunki pogodowe.
 
 tłuszcz 4 - limit 10 dni (łącznie wszystkie dni od rozpoczęcia gry) przekroczenie limitu o:
 
-- 1-2 dni - 5% szansy na schwytanie przez krogulca
-- 3-4 dni - 15% szansy na schwytanie przez krogulca
+* 1-2 dni - 5% szansy na schwytanie przez krogulca
+* 3-4 dni - 15% szansy na schwytanie przez krogulca
   ponad 5 dni - 30% szansy na schwytanie przez krogulca
 
 tłuszcz 5 - limit 5 dni (łącznie wszystkie dni od rozpoczęcia gry) przekroczenie limitu o:
@@ -140,7 +140,6 @@ Szansa zaistnienia temperatury w poszczególnych przedziałach zależy od strefy
 
 Szansa zaistnienia temperatury w poszczególnych przedziałach w strefie 1 (Polska, Niemcy, Czechy, Słowacja)
 
-
 | Opad | wrzesień | październik | listopad i grudzień |
 | ---- | -------- | ----------- | ------------------- |
 | 0    | 50%      | 30%         | 20%                 |
@@ -151,7 +150,6 @@ Szansa zaistnienia temperatury w poszczególnych przedziałach w strefie 1 (Pols
 | 5    | 5%       | 10%         | 5%                  |
 
 ### Temperatura
-
 
 | Temp.    | żerowanie                 | dystans lotu       |
 | -------- | ------------------------- | ------------------ |
@@ -175,7 +173,6 @@ Szansa zaistnienia opadów o różnej intensywności zależy od strefy (są 3 st
 
 #### Zmiany dystansu lotu w zależności od wiatru
 
-
 | Wiatr | w dziób              | w bok                | w ogon               |
 | ----- | -------------------- | -------------------- | -------------------- |
 | 0     | bez zmian            | bez zmian            | bez zmian            |
@@ -186,7 +183,6 @@ Szansa zaistnienia opadów o różnej intensywności zależy od strefy (są 3 st
 | 5     | brak możliwości lotu | brak możliwości lotu | brak możliwości lotu |
 
 #### Szansa zaistnienia wiatru o określonej sile zależy od miesiąca
-
 
 | Wiatr | wrzesień | październik | listopad i grudzień |
 | ----- | -------- | ----------- | ------------------- |
@@ -209,7 +205,6 @@ Szansa zaistnienia wiatru o określonym kierunku zależy od wybranego kierunku m
 
 #### Jakość żerowiska
 
-
 | Żer. | zwiększanie otłuszczenia   |
 | ---- | -------------------------- |
 | 0    | -0.25 stopnia otłuszczenia |
@@ -218,7 +213,6 @@ Szansa zaistnienia wiatru o określonym kierunku zależy od wybranego kierunku m
 | 3    | +1 stopień otłuszczenia    |
 
 #### Szansa napotkania żerowiska określonej jakości
-
 
 | Żer. | szansa |
 | ---- | ------ |
