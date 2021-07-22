@@ -106,7 +106,7 @@ jobs:
         
       - name: Generate the Android App Bundle
         working-directory: ./robin-ionic/android/
-        run: ./gradlew bundle
+        run: ./gradlew --no-daemon bundle
 
       - uses: actions/upload-artifact@v2
         with:
