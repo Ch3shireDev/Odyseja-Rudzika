@@ -53,16 +53,15 @@ jobs:
       - name: Generate the Android App Bundle
         working-directory: ./robin-ionic/android/
         run: ./gradlew bundle
-      - name: list for
-        run: ls -R
+
       - name: Upload dev APK
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: robin-ionic/android/app/build/outputs/apk/debug/app-debug.apk
+          path: '**/*.apk'
 
-      - name: Upload release bundle
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-release
-          path: robin-ionic/android/app/build/outputs/bundle/release/app.aab
+#       - name: Upload release bundle
+#         uses: actions/upload-artifact@v1
+#         with:
+#           name: app-release
+#           path: robin-ionic/android/app/build/outputs/bundle/release/app.aab
