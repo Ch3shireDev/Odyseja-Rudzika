@@ -46,9 +46,9 @@ jobs:
         run: ionic capacitor build android --verbose
         working-directory: ./robin-ionic
 
-      - name: Build Android Release APK
-        run: ionic capacitor build android --release --prod --verbose
-        working-directory: ./robin-ionic
+#      - name: Build Android Release APK
+#        run: ionic capacitor build android --release --prod --verbose
+#        working-directory: ./robin-ionic
         
       - name: Generate the Android App Bundle
         working-directory: ./robin-ionic/android/
@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: ./robin-ionic/android/app/build/outputs/apk/debug/app-debug.apk
+          path: ./android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v1
