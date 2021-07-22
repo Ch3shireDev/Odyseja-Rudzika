@@ -38,41 +38,48 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 13.x
+          node-version: '14'
 
       - name: Install Capacitor
         run: npm install -g capacitor
+        working-directory: ./robin-ionic
 
       - name: Install Ionic
         run: npm install -g @ionic/cli
+        working-directory: ./robin-ionic
 
       - name: Install app dependencies
         run: npm install
+        working-directory: ./robin-ionic
 
       - name: Install app dependencies
         run: npm install
+        working-directory: ./robin-ionic
 
       - name: Add Android platform
         run: ionic capacitor add android
+        working-directory: ./robin-ionic
 
       - name: Build Android Dev APK
-        run: ionic capacitor build android
+        run: ionic capacitor build android --verbose
+        working-directory: ./robin-ionic
 
       - name: Build Android Release APK
-        run: ionic capacitor build android --release --prod
+        run: ionic capacitor build android --release --prod --verbose
+        working-directory: ./robin-ionic
 
       - name: Generate the Android App Bundle
-        working-directory: ./platforms/android/
+        working-directory: ./robin-ionic/platforms/android/
         run: ./gradlew bundle
 
       - name: Upload dev APK
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: ./robin-ionic/platforms/android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v1
         with:
           name: app-release
-          path: platforms/android/app/build/outputs/bundle/release/app.aab
+          path: ./robin-ionic/platforms/android/app/build/outputs/bundle/release/app.aab
