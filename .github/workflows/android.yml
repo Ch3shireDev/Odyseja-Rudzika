@@ -58,7 +58,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: '**/*.apk'
+          path: $(find . -name app*.apk)
 
 #       - name: Upload release bundle
 #         uses: actions/upload-artifact@v1
