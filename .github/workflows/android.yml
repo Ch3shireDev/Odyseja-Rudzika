@@ -54,11 +54,10 @@ jobs:
         working-directory: ./robin-ionic/android/
         run: ./gradlew bundle
 
-      - name: Upload dev APK
-        uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
-          name: app-dev
-          path: $(find . -name app*.apk)
+          name: my-artifact
+          path: '**/app*.apk'
 
 #       - name: Upload release bundle
 #         uses: actions/upload-artifact@v1
