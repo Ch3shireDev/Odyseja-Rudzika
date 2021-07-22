@@ -6,6 +6,7 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  background-color: rgb(104, 198, 224);
 }
 
 #container strong {
@@ -24,4 +25,16 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-content {
+  --ion-background-color: rgb(104, 198, 224);
+}
+
+ion-toolbar {
+  --ion-background-color: #2aa8cb;
+}
+
+ion-title p {
+  color: white;
 }

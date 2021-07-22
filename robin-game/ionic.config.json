@@ -1,7 +1,0 @@
-{
-  "name": "robin-game",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
