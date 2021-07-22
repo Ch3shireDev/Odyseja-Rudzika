@@ -37,6 +37,10 @@ jobs:
       - name: Add Android platform
         run: ionic capacitor add android
         working-directory: ./robin-ionic
+        
+      - name: Copy Android platform (???)
+        run: ionic capacitor copy android
+        working-directory: ./robin-ionic
 
       - name: Build Android Dev APK
         run: ionic capacitor build android --verbose
@@ -45,22 +49,19 @@ jobs:
       - name: Build Android Release APK
         run: ionic capacitor build android --release --prod --verbose
         working-directory: ./robin-ionic
-
-      - name: Make gradlew executable
-        run: chmod +x ./gradlew
         
       - name: Generate the Android App Bundle
-        working-directory: ./robin-ionic/platforms/android/
+        working-directory: ./robin-ionic/android/
         run: ./gradlew bundle
 
       - name: Upload dev APK
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: ./robin-ionic/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: ./robin-ionic/android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v1
         with:
           name: app-release
-          path: ./robin-ionic/platforms/android/app/build/outputs/bundle/release/app.aab
+          path: ./robin-ionic/android/app/build/outputs/bundle/release/app.aab
