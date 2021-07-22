@@ -58,10 +58,10 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app-dev
-          path: /robin-game/robin-ionic/android/app/build/outputs/apk/debug/app-debug.apk
+          path: /home/runner/work/robin-game/robin-game/robin-ionic/android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Upload release bundle
         uses: actions/upload-artifact@v1
         with:
           name: app-release
-          path: /robin-ionic/android/app/build/outputs/bundle/release/app.aab
+          path: /home/runner/work/robin-game/robin-game/robin-ionic/android/app/build/outputs/bundle/release/app.aab
