@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Decyzje
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-text-center">
+  <p>
+    Do ukończenia dnia pozostało: {{deltaTime}}.
+  </p>
+
+  <ion-list>
+    <ion-radio-group>
+      <ion-item>
+        <ion-label>Żeruj intensywnie</ion-label>
+        <ion-radio value="feeding-intensive"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Żeruj na utrzymanie kondycji</ion-label>
+        <ion-radio value="feeding-fit"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Leć dalej</ion-label>
+        <ion-radio value="fly"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Zmień żerowisko</ion-label>
+        <ion-radio value="feeding-switch"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <div style="margin-top:1rem">
+    <ion-button class="primary" (click)="onDayEnd()">
+      Zakończ dzień
+    </ion-button>
+  </div>
+</ion-content>

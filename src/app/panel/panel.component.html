@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Panel
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p><b>Imię:</b> {{data.name}}</p>
+        <p><b>Kondycja:</b> {{data.condition}}</p>
+        <p><b>Warunki żerowania:</b> {{data.foraging}}</p>
+        <p><b>Pogoda:</b> {{data.weather}}</p>
+        <p><b>Lokalizacja:</b> {{data.location}}</p>
+      </ion-col>
+      <ion-col>
+        <ion-img src="assets/robin-remus.png"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <p><b>Podjęta decyzja:</b> {{data.decision}}</p>
+    </ion-row>
+  </ion-grid>
+</ion-content>
