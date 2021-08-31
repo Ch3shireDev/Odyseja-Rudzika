@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./map/map.module').then(m => m.MapModule)
   },
   {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
     path: '',
     redirectTo: 'panel',
     pathMatch: 'full'

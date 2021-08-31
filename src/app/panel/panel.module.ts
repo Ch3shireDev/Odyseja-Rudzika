@@ -27,7 +27,8 @@ export class PanelRoutingModule { }
     CommonModule,
     RouterModule,
     IonicModule,
-    PanelRoutingModule
+    PanelRoutingModule,
+    RouterModule
   ],
   bootstrap: [PanelComponent],
   providers: [

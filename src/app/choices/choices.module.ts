@@ -26,10 +26,11 @@ export class ChoicesRoutingModule { }
   imports: [
     CommonModule,
     ChoicesRoutingModule,
-    IonicModule
+    IonicModule,
+    RouterModule
   ],
   providers: [
-    DatabaseService,
+    // DatabaseService,
     SQLite
   ]
 })

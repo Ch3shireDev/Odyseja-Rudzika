@@ -21,7 +21,15 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <p><b>Podjęta decyzja:</b> {{data.decision}}</p>
+      <p><b>Podjęte decyzje:</b></p>
+    </ion-row>
+    <ion-row>
+      <ion-list lines="full" style="width:100%">
+        <ion-item *ngFor="let decision of decisions">
+          <b>{{decision.date | date:'d MMMM'}}</b> 
+          <span style="margin-left:1rem">{{decision.name}}</span>
+        </ion-item>
+      </ion-list>
     </ion-row>
   </ion-grid>
 </ion-content>

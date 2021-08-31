@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SettingsComponent } from './settings.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MapComponent } from './map.component';
-import { SQLite } from '@ionic-native/sqlite/ngx';
-import { DatabaseService } from '../database.service';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: MapComponent,
+    component: SettingsComponent,
   }
 ];
 
@@ -17,19 +15,14 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MapRoutingModule { }
-
+export class SettingsRoutingModule { }
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    MapRoutingModule,
+    SettingsRoutingModule,
     RouterModule
-  ],
-  providers:[
-    SQLite,
-    // DatabaseService
   ]
 })
-export class MapModule { }
+export class SettingsModule { }

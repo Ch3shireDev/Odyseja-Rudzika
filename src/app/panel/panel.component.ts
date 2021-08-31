@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-panel',
@@ -8,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class PanelComponent implements OnInit {
 
   public data: RobinData;
+  public decisions: { id: number, name: string }[];
 
-  constructor() { }
+  constructor(private database: DatabaseService) { }
 
   ngOnInit() {
     this.data = new RobinData();
     this.data.name = "Remus";
+    this.decisions = [];
+    this.database.getDecisions().then(d => { this.decisions = d; })
   }
 
 }
