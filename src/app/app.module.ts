@@ -10,6 +10,7 @@ import { PanelModule } from './panel/panel.module';
 import { ChoicesModule } from './choices/choices.module';
 import { MapModule } from './map/map.module';
 import { DatabaseService } from './database.service'; import { LOCALE_ID } from '@angular/core';
+import { RobinService } from './robin.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { DatabaseService } from './database.service'; import { LOCALE_ID } from 
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   { provide: LOCALE_ID, useValue: 'pl' },
-    DatabaseService
+    DatabaseService,
+    RobinService
   ],
   bootstrap: [AppComponent],
 })

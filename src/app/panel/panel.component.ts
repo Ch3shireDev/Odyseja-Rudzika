@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
+import { RobinData } from '../models/robin';
 
 @Component({
   selector: 'app-panel',
@@ -8,25 +9,19 @@ import { DatabaseService } from '../database.service';
 })
 export class PanelComponent implements OnInit {
 
-  public data: RobinData;
+  public robinData: RobinData;
   public decisions: { id: number, name: string }[];
 
   constructor(private database: DatabaseService) { }
 
   ngOnInit() {
-    this.data = new RobinData();
-    this.data.name = "Remus";
+    this.database.getRobinData().then(data => {
+      this.robinData = data;
+    });
+
     this.decisions = [];
     this.database.getDecisions().then(d => { this.decisions = d; })
   }
 
 }
 
-class RobinData {
-  name: string;
-  condition: string;
-  foraging: string;
-  weather: string;
-  location: string;
-  decision: string;
-}

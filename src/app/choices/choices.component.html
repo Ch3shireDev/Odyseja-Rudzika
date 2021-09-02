@@ -5,38 +5,41 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-text-center">
-  <p>
+<ion-content class="ion-text-begin" *ngIf="robinData">
+  <p><b>Bieżąca data: </b> {{robinData.currentDate| date:'d MMMM'}}</p>
+  <p><b>Bieżąca lokalizacja:</b> {{robinData.currentLocation}}</p>
+  <p><b>Decyzja:</b></p>
+  <!-- <p>
     Do ukończenia dnia pozostało: {{deltaTime}}.
-  </p>
+  </p> -->
 
   <ion-list>
-    <ion-radio-group>
+    <ion-radio-group [(ngModel)]="robinChoice">
       <ion-item>
         <ion-label>Żeruj intensywnie</ion-label>
-        <ion-radio value="feeding-intensive"></ion-radio>
+        <ion-radio [value]="decisions.IntensiveFeeding"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Żeruj na utrzymanie kondycji</ion-label>
-        <ion-radio value="feeding-fit"></ion-radio>
+        <ion-radio [value]="decisions.FitFeeding"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Leć dalej</ion-label>
-        <ion-radio value="fly"></ion-radio>
+        <ion-radio [value]="decisions.Fly"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>Zmień żerowisko</ion-label>
-        <ion-radio value="feeding-switch"></ion-radio>
+        <ion-radio [value]="decisions.SwitchFeeding"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
 
-  <div style="margin-top:1rem">
+  <div style="margin-top:2rem" class="ion-text-center">
     <ion-button class="primary" (click)="onDayEnd()">
-      Zakończ dzień
+      Podejmij decyzję i zakończ dzień
     </ion-button>
   </div>
 </ion-content>

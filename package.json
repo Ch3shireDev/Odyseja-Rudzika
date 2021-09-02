@@ -5,6 +5,7 @@
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
+    "run": "ionic cap run android --external --livereload",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
