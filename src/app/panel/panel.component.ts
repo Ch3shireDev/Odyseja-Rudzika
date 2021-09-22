@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RobinLabels } from '../core/robin-labels';
 import { DatabaseService } from '../database.service';
-import { RobinData } from '../models/robin';
+import { RobinService } from '../robin.service';
 
 @Component({
   selector: 'app-panel',
@@ -8,19 +9,19 @@ import { RobinData } from '../models/robin';
   styleUrls: ['./panel.component.scss'],
 })
 export class PanelComponent implements OnInit {
+  public robin: RobinLabels;
+  public decisions: { id: number, name: string; }[];
 
-  public robinData: RobinData;
-  public decisions: { id: number, name: string }[];
-
-  constructor(private database: DatabaseService) { }
+  constructor(private database: DatabaseService, private robinSerivce: RobinService) { }
 
   ngOnInit() {
-    this.database.getRobinData().then(data => {
-      this.robinData = data;
-    });
+    // this.database.getRobinData().then(data => {
+    //   this.robinData = data;
+    // });
 
     this.decisions = [];
-    this.database.getDecisions().then(d => { this.decisions = d; })
+    this.database.getDecisions().then(d => { this.decisions = d; });
+    this.robin = this.robinSerivce.getRobin();
   }
 
 }

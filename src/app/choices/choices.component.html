@@ -5,16 +5,9 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="ion-text-begin" *ngIf="robinData">
-  <p><b>Bieżąca data: </b> {{robinData.currentDate| date:'d MMMM'}}</p>
-  <p><b>Bieżąca lokalizacja:</b> {{robinData.currentLocation}}</p>
-  <p><b>Decyzja:</b></p>
-  <!-- <p>
-    Do ukończenia dnia pozostało: {{deltaTime}}.
-  </p> -->
-
+<ion-content *ngIf="robin">
   <ion-list>
-    <ion-radio-group [(ngModel)]="robinChoice">
+    <ion-radio-group [(ngModel)]="decision">
       <ion-item>
         <ion-label>Żeruj intensywnie</ion-label>
         <ion-radio [value]="decisions.IntensiveFeeding"></ion-radio>
@@ -26,7 +19,7 @@
       </ion-item>
 
       <ion-item>
-        <ion-label>Leć dalej</ion-label>
+        <ion-label>Leć</ion-label>
         <ion-radio [value]="decisions.Fly"></ion-radio>
       </ion-item>
 
@@ -34,10 +27,22 @@
         <ion-label>Zmień żerowisko</ion-label>
         <ion-radio [value]="decisions.SwitchFeeding"></ion-radio>
       </ion-item>
+      <ion-item>
+        <ion-label>Lecz rany</ion-label>
+        <ion-radio [value]="decisions.Recover"></ion-radio>
+      </ion-item>
     </ion-radio-group>
   </ion-list>
 
-  <div style="margin-top:2rem" class="ion-text-center">
+  <div class="decision">
+    <div class="slidecontainer" *ngIf="decision == decisions.Fly">
+      <p>Ilość tłuszczu do zużycia:</p>
+      <input #time type="range" min="2" [max]="10" [(ngModel)]="flyFat" class="slider" step="0.1">
+      <p>{{flyFat.toFixed(1)}} / {{robin.fat}}</p>
+    </div>
+
+</div>
+  <div class="ion-text-center">
     <ion-button class="primary" (click)="onDayEnd()">
       Podejmij decyzję i zakończ dzień
     </ion-button>

@@ -6,30 +6,147 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="robinData">
+<ion-content *ngIf="robin">
   <ion-grid>
     <ion-row>
       <ion-col>
-        <p><b>Imię:</b> {{robinData.name}}</p>
-        <p><b>Kondycja:</b> {{robinData.condition}}</p>
-        <p><b>Warunki żerowania:</b> {{robinData.feeding}}</p>
-        <p><b>Pogoda:</b> {{robinData.weather}}</p>
-        <p><b>Lokalizacja:</b> {{robinData.currentLocation}}</p>
+        <div class="tiles">
+          <div class="category">
+            <div class="category-header">Dane</div>
+            <table>
+              <tr class="model-data">
+                <td class="header">Imię</td>
+                <td class="value">{{robin.name}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Płeć</td>
+                <td class="value">{{robin.sex}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Skrzydło</td>
+                <td class="value">{{robin.wing}}</td>
+              </tr>
+            </table>
+          </div>
+
+
+          <div class="category">
+            <div class="category-header">Postęp</div>
+            <table>
+              <tr class="model-data">
+                <td class="header">Data</td>
+                <td class="value">{{robin.date}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Droga</td>
+                <td class="value">{{robin.distanceMade}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Pozostało</td>
+                <td class="value">{{robin.distanceTo}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Położenie</td>
+                <td class="value">{{robin.location}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="category">
+            <div class="category-header">Stan</div>
+            <table>
+              <tr class="model-data">
+                <td class="header">Zdrowie</td>
+                <td class="value">{{robin.health}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Tłuszcz</td>
+                <td class="value">{{robin.fat}}</td>
+              </tr>
+              <!-- <tr class="model-data">
+                <td class="header">Tł. pod koniec dnia</td>
+                <td class="value">{{robin.endDayFat}}</td>
+              </tr> -->
+              <tr class="model-data">
+                <td class="header">Żerowisko</td>
+                <td class="value">{{robin.feedingGround}}</td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="category">
+
+            <div class="category-header">Pogoda</div>
+            <table>
+              <tr class="model-data">
+                <td class="header">Wiatr</td>
+                <td class="value">{{robin.wind}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Deszcz</td>
+                <td class="value">{{robin.rain}}</td>
+              </tr>
+              <tr class="model-data">
+                <td class="header">Temperatura</td>
+                <td class="value">{{robin.temperature}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <!-- <h5>Imię</h5>
+        <p>{{robinModel.name}}</p>
+        <h5>Zdrowie</h5>
+        <p>{{robinModel.healthLabel}}</p>
+        <h5>Warunki żerowania</h5>
+        <p>{{robinModel.feedingLabel}}</p>
+        <h5>Pogoda</h5>
+        <p><b>Wiatr: </b> {{robinModel.weather.windLabel}}</p>
+        <p><b>Deszcz: </b> {{robinModel.weather.rainLabel}}</p>
+        <p><b>Temperatura: </b> {{robinModel.weather.temperature}}</p>
+        <h5>Lokalizacja</h5>
+        <p>{{robinModel.currentLocation.latitude}}, {{robinModel.currentLocation.longitude}}</p> -->
       </ion-col>
       <ion-col>
-        <ion-img src="assets/robin-remus.png"></ion-img>
+        <div class="img-container">
+          <ion-img src="assets/robin-remus.png"></ion-img>
+        </div>
+        <div class="category">
+          <div class="category-header">Doświadczenie</div>
+          <table>
+            <tr>
+              <td class="header">Krogulec</td>
+              <td class="value">{{robin.sparrowHawks}}</td>
+            </tr>
+            <tr>
+              <td class="header">Załamanie pogody</td>
+              <td class="value">{{robin.weatherBreakdowns}}</td>
+            </tr>
+            <tr>
+              <td class="header">Mgła</td>
+              <td class="value">{{robin.mists}}</td>
+            </tr>
+            <tr>
+              <td class="header">Szklany wieżowiec</td>
+              <td class="value">{{robin.skyscrapers}}</td>
+            </tr>
+          </table>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <p><b>Podjęte decyzje:</b></p>
-    </ion-row>
-    <ion-row>
+      <!-- <p><b>Podjęte decyzje:</b></p>
       <ion-list lines="full" style="width:100%">
         <ion-item *ngFor="let decision of decisions">
-          <b>{{decision.date | date:'d MMMM'}}</b> 
+          <b>{{decision.date | date:'d MMMM'}}</b>
           <span style="margin-left:1rem">{{decision.name}}</span>
         </ion-item>
-      </ion-list>
+      </ion-list> -->
+      <div class="category fill">
+        <div class="category-header">Czy wiesz że?</div>
+        <p class="text-justify">Rudzik jest małym ptakiem wędrownym z rodziny muchołówkowatych. Dzięki rdzawej barwie
+          czoła, boków głowy,
+          piersi dorosłe ptaki są łatwe do rozpoznania. Kolejną cechą rozpoznawczą jest śpiew, który słychać nawet
+          wtedy, gdy większość leśnych ptaków milczy. </p>
+      </div>
     </ion-row>
   </ion-grid>
 </ion-content>

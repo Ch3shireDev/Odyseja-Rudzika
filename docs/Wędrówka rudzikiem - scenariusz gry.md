@@ -42,7 +42,7 @@ Gracz ma do dyspozycji dwa widoki ekranu:
 
 ### Otłuszczenie (od 0 (-0.5) do 5)
 
-Zasięg jednonocnej wędrówki zależy właśnie od poziomu tłuszczu wieczorem przed startem. Ale ptak bardzo otłuszczony (4 i 5) jest też łatwiejszy do upolowania przez drapieżniki - szczególnie przez wyspecjalizowane w polowaniu na małe ptaki krogulce. Z drugiej strony ptak w ogóle bez tłuszczy musi zginąć jeśli napotka niesprzyjające warunki. Właściwa strategia polega więc na szybkim otłuszczaniu się i wykonaniu nocnego przelotu. Warto też mieć niewielki zapas tłuszczu na koniec nocy, żeby w razie napotkania niesprzyjających warunków w miejscu wylądowania móc zmienić miejsce na odpoczynek.
+Zasięg jednonocnej wędrówki zależy właśnie od poziomu tłuszczu wieczorem przed startem. Ale ptak bardzo otłuszczony (4 i 5) jest też łatwiejszy do upolowania przez drapieżniki - szczególnie przez wyspecjalizowane w polowaniu na małe ptaki krogulce. Z drugiej strony ptak w ogóle bez tłuszczu musi zginąć jeśli napotka niesprzyjające warunki. Właściwa strategia polega więc na szybkim otłuszczaniu się i wykonaniu nocnego przelotu. Warto też mieć niewielki zapas tłuszczu na koniec nocy, żeby w razie napotkania niesprzyjających warunków w miejscu wylądowania móc zmienić miejsce na odpoczynek.
 
 Występuje też wyjątkowo ujemne otłuszczenie (-0.25 i -0.5) - jesteś tylko o krok od śmierci, żeby utrzymać się przy życiu zacząłeś już zużywać narządy wewnętrzne. Dalsze schudniecie to śmierć. Ale przytyć nie jest już łatwo - efektywność tycia jest zmniejszona o -0.25 punktu.
 
@@ -55,13 +55,30 @@ Opady znacznie utrudniają zarówno przelot jak i żerowanie (zmniejszają dysta
 Temperatura nocą powyżej 25 stopni w ogóle uniemożliwia przelot, a pomiędzy 15 a 25 zmniejsza jego zasięg. Niskie temperatury nie przeszkadzają rudzikowi w przelocie, ale utrudniają żerowanie. Jeśli temperatura jest minusowa rudzik nie może skutecznie zerować, z trudem utrzymuje dotychczasową kondycję. Kombinacja opadu i mrozu powoduje, że rudzik chudnie.
 
 Opad jest zmienną losową, temperatura zmienną losową, ale prawdopodobieństwo wylosowania określonych wartości zależy od aktualnej daty (zgodnie z prawdziwymi zmianami pór roku).
-Wiatr (od 0 do 5; kierunek 1) w dziób; 2) w ogon; 3) w bok) Huraganowy wiatr (5) oraz wiatr bardzo silny (4) w dziób uniemożliwia wędrówkę. Wiatr o mniejszej sile zmienia dystans przelotu - wiatry w ogon znacznie go zwiększają, wiatry w dziób zmniejszają, a boczne są obojętne, lub jeśli są silne zmniejszają zasięg ale mniej znacząco.
+
+### Wiatr (od 0 do 5); 
+
+Kierunek:
+1) w dziób; 
+2) w ogon; 
+3) w bok
+
+Natężenie:
+
+1) Cisza
+2) Słaby wiatr
+3) Łagodny wiatr
+4) Umiarkowany wiatr
+5) Silny wiatr
+6) Huragan
+
+Wiatr o mniejszej sile zmienia dystans przelotu - wiatry w ogon znacznie go zwiększają, wiatry w dziób zmniejszają, a boczne są obojętne, lub jeśli są silne zmniejszają zasięg ale mniej znacząco.
 
 Wiatr jest zmienną losową ale z różnymi prawdopodobieństwami poszczególnych rodzajów wiatru w zależności od wybranej trasy.
 
 ## Jakość żerowiska (od 0 do 3)
 
-* Bardzo słabe żerowisko (0) powoduje chudnięcie i koniecznie trzeba go zmienić.
+* Bardzo słabe żerowisko (0) powoduje chudnięcie i koniecznie trzeba je zmienić.
 * Słabe żerowisko (1) umożliwia utrzymanie dotychczasowej kondycji i może być tylko miejscem przeczekania złej pogody, 
 * żerowiska średnie do bardzo dobrego (2 i 3) umożliwiają przybieranie na wadze.
 
@@ -109,10 +126,10 @@ Dla przykładu skrzydło zaostrzone powoduje zwiększenie dystansu przelotu o 25
 ### Otłuszczenie
 
 * -0.5 (brak tłuszczu, naruszenie narządów wewnętrznych) - wydłuża dwukrotnie czas przytycia o 0.5 jednostki. Przy żerowisku 0 oznacza śmierć w następnej rundzie, a przy żerowisku 1 wegetację do nadejścia zimy. Uniemożliwia zmianę żerowiska.
-* 0 do 1, 5 (brak tłuszczu lub niski poziom tłuszczu) - możliwe normalne żerowanie i zmiana żerowiska.
+* 0 do 1.5 (brak tłuszczu lub niski poziom tłuszczu) - możliwe normalne żerowanie i zmiana żerowiska.
 * 2 - 5 (umiarkowany do bardzo wysoki poziom tłuszczu) - możliwe normalne żerowanie i przelot na dystans 50 km za każde zużyte 0.5 punktu tłuszczu. Samo wystartowanie wymaga 0.5 punktu tłuszczu.
 
-Przykład: Jeśli gracz ma tłuszcz 3 i chce zachować 0.5 tłuszczu na moment wylądowania to przeleci 200 km (zużyje 0.5 tłuszczu za każde 50 kilometrów i 0.5 na wystartowanie, czyli łącznie 2, 5 punktu). Wartość ta jest modyfikowana przez warunki pogodowe.
+Przykład: Jeśli gracz ma tłuszcz 3 i chce zachować 0.5 tłuszczu na moment wylądowania to przeleci 200 km (zużyje 0.5 tłuszczu za każde 50 kilometrów i 0.5 na wystartowanie, czyli łącznie 2.5 punktu). Wartość ta jest modyfikowana przez warunki pogodowe.
 
 tłuszcz 4 - limit 10 dni (łącznie wszystkie dni od rozpoczęcia gry) przekroczenie limitu o:
 
@@ -209,7 +226,7 @@ Szansa zaistnienia wiatru o określonym kierunku zależy od wybranego kierunku m
 | ---- | -------------------------- |
 | 0    | -0.25 stopnia otłuszczenia |
 | 1    | bez zmian                  |
-| 2    | +0. 5 stopnia otłuszczenia |
+| 2    | +0.5 stopnia otłuszczenia  |
 | 3    | +1 stopień otłuszczenia    |
 
 #### Szansa napotkania żerowiska określonej jakości

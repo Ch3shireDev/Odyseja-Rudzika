@@ -27,6 +27,7 @@
 
 ion-content {
   --ion-background-color: rgb(104, 198, 224);
+
 }
 
 ion-toolbar,
@@ -37,4 +38,9 @@ ion-tabs {
 
 ion-tab-button {
   color: white;
+}
+
+ion-grid{
+  width:100%;
+  margin:0;
 }

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { DecisionEnum } from './core/enums';
+import { RobinLabels } from './core/robin-labels';
+import { RobinModel } from './core/robin-model';
 import { DatabaseService } from './database.service';
-import { DecisionEnum } from './decision.enum';
+// import { DecisionEnum } from './decision.enum';
 import { DecisionResult } from './models/decision-result';
 import { RobinData } from './models/robin';
 
@@ -21,6 +24,10 @@ export class RobinService {
           dr.message = "hello worldo";
           resolve(dr);
         });
-    })
+    });
+  }
+
+  getRobin(): RobinLabels {
+    return new RobinLabels(new RobinModel());
   }
 }

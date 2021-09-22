@@ -1,0 +1,22 @@
+{
+    "sparrowHawkAttackProbability": 0.5,
+    "dailyFatCost": 1,
+    "overweightLevel": 10,
+    "maxFatTissue": 15,
+    "minFatTissue": -1,
+    "negativeFatModificator": 0.5,
+    "flyFatEffectiveness": 25000,
+    "flyFatCost": 1,
+    "maxFlightTemperature": 25,
+    "minFlightFatTissue": 2,
+    "skyscraperCollisionProbability": 0.0002,
+    "skyscraperCollisionDeathChance": 0.33,
+    "sparrowHawkAttackExperienceModificator": 0.01,
+    "sparrowHawkAttackFatTissueModificator": 0.01,
+    "sparrowHawkAttackDeathProbability": 0.33,
+    "maxFlightTemperatureOptimal": 15,
+    "maxFlightTemperatureSubOptimal": 26,
+    "maxFlightTemperatureSubOptimalModificator": 0.75,
+    "minTemperatureOptimalFeeding": 0,
+    "minTemperatureOptimalFeedingModificator": 0.75
+}
