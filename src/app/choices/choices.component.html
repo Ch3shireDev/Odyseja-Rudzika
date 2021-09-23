@@ -6,45 +6,70 @@
   </ion-toolbar>
 </ion-header>
 <ion-content *ngIf="robin">
-  <ion-list>
-    <ion-radio-group [(ngModel)]="decision">
-      <ion-item>
-        <ion-label>Żeruj intensywnie</ion-label>
-        <ion-radio [value]="decisions.IntensiveFeeding"></ion-radio>
-      </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-list>
+        <ion-radio-group [(ngModel)]="decision">
+          <ion-item>
+            <ion-label>Żeruj intensywnie</ion-label>
+            <ion-radio [value]="decisions.IntensiveFeeding"></ion-radio>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Żeruj na utrzymanie kondycji</ion-label>
-        <ion-radio [value]="decisions.FitFeeding"></ion-radio>
-      </ion-item>
+          <ion-item>
+            <ion-label>Żeruj na utrzymanie kondycji</ion-label>
+            <ion-radio [value]="decisions.FitFeeding"></ion-radio>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Leć</ion-label>
-        <ion-radio [value]="decisions.Fly"></ion-radio>
-      </ion-item>
+          <ion-item>
+            <ion-label>Leć</ion-label>
+            <ion-radio [value]="decisions.Fly"></ion-radio>
+          </ion-item>
 
-      <ion-item>
-        <ion-label>Zmień żerowisko</ion-label>
-        <ion-radio [value]="decisions.SwitchFeeding"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Lecz rany</ion-label>
-        <ion-radio [value]="decisions.Recover"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
+          <ion-item>
+            <ion-label>Zmień żerowisko</ion-label>
+            <ion-radio [value]="decisions.SwitchFeeding"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Lecz rany</ion-label>
+            <ion-radio [value]="decisions.Recover"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-row>
+    <ion-row class="decision">
+      <div *ngIf="decision === decisions.IntensiveFeeding" class="decision-container">
+        <p><b>Żerowisko:</b> {{robin.feedingGround}}</p>
+        <p><b>Wiatr:</b> {{robin.wind}}</p>
+        <p><b>Deszcz:</b> {{robin.rain}}</p>
+        <p><b>Temperatura:</b> {{robin.temperature}}</p>
+        <p><b>Przewidywany wynik:</b> {{robin.getIntensiveFeeding()}}</p>
+      </div>
+      <div *ngIf="decision === decisions.FitFeeding" class="decision-container">
+        <p><b>Żerowisko:</b> {{robin.feedingGround}}</p>
+        <p><b>Wiatr:</b> {{robin.wind}}</p>
+        <p><b>Deszcz:</b> {{robin.rain}}</p>
+        <p><b>Temperatura:</b> {{robin.temperature}}</p>
+        <p><b>Przewidywany wynik:</b> {{robin.getFitFeeding()}}</p>
+      </div>
+      <div class="slidecontainer decision-container" *ngIf="decision === decisions.Fly">
+        <p>Ilość tłuszczu do zużycia:</p>
+        <input #time type="range" min="2" [max]="robin.fat" [(ngModel)]="flyFat" class="slider" step="0.1">
+        <p>Użyj {{flyFat.toFixed(1)}} jednostek tłuszczu na {{robin.fat}} możliwe.</p>
+        <p>Przewidywana odległość: {{robin.getFlightDistance(flyFat)}}.</p>
+      </div>
+      <div *ngIf="decision===decisions.SwitchFeeding" class="decision-container">
+        <p>{{robin.getSwitchFeeding()}}</p>
+      </div>
+      <div *ngIf="decision===decisions.Recover" class="decision-container">
+        <p>{{robin.getRecover()}}</p>
+      </div>
+    </ion-row>
+    <ion-row class="ion-text-center">
 
-  <div class="decision">
-    <div class="slidecontainer" *ngIf="decision == decisions.Fly">
-      <p>Ilość tłuszczu do zużycia:</p>
-      <input #time type="range" min="2" [max]="10" [(ngModel)]="flyFat" class="slider" step="0.1">
-      <p>{{flyFat.toFixed(1)}} / {{robin.fat}}</p>
-    </div>
+      <ion-button class="primary" (click)="onDayEnd()" id="decision-button">
+        Podejmij decyzję i zakończ dzień
+      </ion-button>
 
-</div>
-  <div class="ion-text-center">
-    <ion-button class="primary" (click)="onDayEnd()">
-      Podejmij decyzję i zakończ dzień
-    </ion-button>
-  </div>
+    </ion-row>
+  </ion-grid>
 </ion-content>

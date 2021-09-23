@@ -1,5 +1,11 @@
+import { DecisionFly } from "./decision-fly";
+import { DecisionModel } from "./decision-model";
+import { DecisionEnum } from "./enums";
 import { FeedingGroundLabels, getRainLabel, getWindLabel, HealthLabel, SexLabels, WingTypeLabels } from "./labels";
 import { RobinModel } from "./robin-model";
+import { Config } from "../core/config";
+import { DecisionIntensiveFeeding } from "./decision-intensive-feeding";
+import { DecisionFitFeeding } from "./decision-fit-feeding";
 
 function toKm(distance: number, fixed = 1): string {
     return (distance / 1000).toFixed(fixed) + " km";
@@ -38,5 +44,33 @@ export class RobinLabels {
         const lonM = Math.floor((lonA - lonD) * 60);
         const lonS = long < 0 ? 'W' : 'E';
         return `${latD}°${latM}' ${latS}, ${lonD}°${lonM}' ${lonS}`;
+    }
+    getFlightDistance(flyFat: number): string {
+        const config = new Config();
+        const decisionModel = new DecisionModel();
+        decisionModel.decision = DecisionEnum.Fly;
+        decisionModel.fatUsed = flyFat;
+        let decision = new DecisionFly(config, this.robinModel, decisionModel);
+        return `${(decision.getResult().expectedDistance / 1000).toFixed(1)} km`;
+    }
+
+    getIntensiveFeeding(): string {
+        const config = new Config();
+        const decisionModel = new DecisionModel();
+        decisionModel.decision = DecisionEnum.IntensiveFeeding;
+        let decision = new DecisionIntensiveFeeding(config, this.robinModel);
+        return decision.getResult().expectedResult;
+    }
+    getFitFeeding(): string {
+        const config = new Config();
+        let decision = new DecisionFitFeeding(config, this.robinModel);
+        return decision.getResult().expectedResult;
+    }
+    getSwitchFeeding(): string {
+        return "";
+    }
+
+    getRecover(): string {
+        return "";
     }
 }

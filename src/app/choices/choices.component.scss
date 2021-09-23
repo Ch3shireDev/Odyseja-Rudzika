@@ -1,10 +1,3 @@
-ion-content {
-  // --padding-bottom: 10px;
-  // --padding-end: 10px;
-  // --padding-start: 20px;
-  // --padding-top: 20px;
-}
-
 .slidecontainer {
   width: 80%;
   margin: auto;
@@ -43,6 +36,12 @@ ion-content {
 
 .decision {
   min-height: 200px;
+  max-height: 600px;
+  margin:auto;
+}
+
+.decision-container{
+  margin:auto;
 }
 
 ion-list {
@@ -50,3 +49,6 @@ ion-list {
   margin: auto;
 }
 
+#decision-button {
+  margin: auto;
+}
