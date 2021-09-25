@@ -73,7 +73,7 @@
         <div class="warning">{{result.message}}</div>
       </div>
     </ion-row>
-    <ion-row class="ion-text-center" *ngIf="result.success">
+    <ion-row class="ion-text-center" *ngIf="result?.success">
     <ion-button class="primary" (click)="submit()" id="decision-button">
       Podejmij decyzję i zakończ dzień
     </ion-button>

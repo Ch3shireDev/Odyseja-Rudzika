@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Config } from './core/config';
 import { DecisionModel } from './core/decision-model';
-import { DecisionEnum } from './core/enums';
-import { RobinLabels } from './core/robin-labels';
+import { Result } from './core/result';
+import { Robin } from './core/robin';
 import { RobinModel } from './core/robin-model';
 import { DatabaseService } from './database.service';
-import { DecisionResult } from './models/decision-result';
-import { RobinData } from './models/robin';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +13,29 @@ export class RobinService {
 
   constructor(private database: DatabaseService) { }
 
-  makeDecision(decision: DecisionModel): Promise<DecisionResult> {
-    return new Promise<DecisionResult>((resolve, reject) => {
-      // let newDate = robinData.currentDate;
-      // newDate.setDate(newDate.getDate() + 1);
-      // this.database.updateDate(robinData.id, newDate)
-        // .then(() => {
-          // let dr = new DecisionResult();
-          // dr.message = "hello worldo";
-          // resolve(dr);
-        // });
+  async makeDecision(id: number, decision: DecisionModel): Promise<Result> {
+    let robinModel = await this.database.getRobin(id);
+    let config = new Config();
+    let robin = new Robin(config, robinModel);
+    let result = robin.sendDecision(decision);
+    if (result.success) {
+      robin.setResult(result);
+      console.log(robinModel);
+      await this.database.updateRobin(id, robinModel);
+    }
+    console.log(result);
+    return new Promise<Result>((resolve, reject) => {
+      resolve(result);
     });
   }
 
-  getRobin(): RobinLabels {
-    return new RobinLabels(new RobinModel());
+  getRobin(id: number): Promise<RobinModel> {
+    return this.database.getRobin(id);
   }
+
+  createRobin(): Promise<RobinModel> {
+    return this.database.createRobin();
+  }
+
+
 }

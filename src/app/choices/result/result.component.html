@@ -1,0 +1,10 @@
+<ion-grid>
+  <ion-row class="ion-text-center">
+    <p *ngIf="result.fatGained">Zyskujesz {{result.fatGained|number:'1.0'}} punktów tłuszczu.</p>
+    <p *ngIf="result.fatUsed">Tracisz {{result.fatUsed|number:'1.0'}} punktów tłuszczu.</p>
+    <div *ngIf="result.sparrowHawkAttack">
+      <p>Ulegasz atakowi przez krogulca!</p>
+      <p>Twój stan zdrowia to: {{getHealthLabel(result.health)}}</p>
+    </div>
+  </ion-row>
+</ion-grid>

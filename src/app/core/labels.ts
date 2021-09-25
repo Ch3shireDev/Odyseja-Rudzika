@@ -62,7 +62,7 @@ export function getWindLabel(direction: WindDirection, type: WindType): string {
     if (type == WindType.None) {
         return WindTypeLabels.get(type) ?? "brak";
     } else if (type == WindType.Hurricane) {
-        return `${WindTypeLabels.get(type)}}`;
+        return `${WindTypeLabels.get(type)}`;
     } else {
         return `${WindTypeLabels.get(type)}, ${WindDirectionLabels.get(direction)}`;
     }

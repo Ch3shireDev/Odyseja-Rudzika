@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private database: DatabaseService) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
+
+  submitReset() {
+    this.database.dropDatabase().then(
+      () => this.database.createDatabase()
+    )
+  }
 
 }

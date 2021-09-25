@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ChoicesComponent } from './choices.component';
 import { IonicModule } from '@ionic/angular';
-import { DatabaseService } from '../database.service';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { FormsModule } from '@angular/forms';
+import { ResultComponent } from './result/result.component';
 
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ export class ChoicesRoutingModule { }
 
 
 @NgModule({
-  declarations: [ChoicesComponent],
+  declarations: [ChoicesComponent, ResultComponent],
   imports: [
     CommonModule,
     FormsModule,

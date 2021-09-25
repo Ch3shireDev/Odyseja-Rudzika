@@ -3,6 +3,7 @@ import { Direction, FeedingGround, Health, Sex, WingType } from "./enums";
 import { WeatherModel } from "./weather-model";
 
 export class RobinModel {
+    public id: number;
     public name = "Remus";
     public sex: Sex = Sex.Male;
     public currentDate: Date = new Date("2021-09-01");
@@ -22,8 +23,6 @@ export class RobinModel {
     public sparrowHawkAttackSuccessBaseProbability = 0.25;
     public health: Health = Health.Healthy;
     public turn = 1;
-    public injuredDays = 0;
-    public overweightLevel = 10;
     public numberOfSafeOverweightDays = 3;
     public overweightDay = 0;
 

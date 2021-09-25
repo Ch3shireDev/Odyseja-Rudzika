@@ -15,13 +15,12 @@ export class PanelComponent implements OnInit {
   constructor(private database: DatabaseService, private robinSerivce: RobinService) { }
 
   ngOnInit() {
-    // this.database.getRobinData().then(data => {
-    //   this.robinData = data;
-    // });
+ }
 
+  ionViewWillEnter(){
     this.decisions = [];
     this.database.getDecisions().then(d => { this.decisions = d; });
-    this.robin = this.robinSerivce.getRobin();
+    this.robinSerivce.getRobin(1).then(robin => this.robin = new RobinLabels(robin));
   }
 
 }

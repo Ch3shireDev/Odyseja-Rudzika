@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../database.service';
 import { RobinService } from '../robin.service';
 import { RobinLabels } from '../core/robin-labels';
 import { DecisionEnum } from '../core/enums';
@@ -7,7 +6,10 @@ import { DecisionLabels } from '../core/labels';
 import { RobinModel } from '../core/robin-model';
 import { LabelResult } from '../core/label-result';
 import { DecisionModel } from '../core/decision-model';
-import { Decision } from '../core/decision';
+import { Router } from '@angular/router';
+import { PopoverController } from '@ionic/angular';
+import { ResultComponent } from './result/result.component';
+import { Result } from '../core/result';
 
 @Component({
   selector: 'app-choices',
@@ -22,34 +24,54 @@ export class ChoicesComponent implements OnInit {
   decisions = DecisionEnum;
   decisionLabels = DecisionLabels;
   decision: DecisionModel;
-  decisionValue:DecisionEnum;
+  decisionValue: DecisionEnum;
   public result: LabelResult;
+  robinModel: RobinModel;
 
-  get robinModel(): RobinModel {
-    return this.robin.robinModel;
-  }
 
-  constructor(private database: DatabaseService, private robinService: RobinService) { }
+  constructor(private robinService: RobinService, private router: Router,
+    public popoverController: PopoverController
+  ) { }
 
   ngOnInit() {
-
-    this.robin = this.robinService.getRobin();
-    // this.result = this.robin.getResultLabel(this.decision);
-
   }
 
+  ionViewWillEnter() {
+    this.robinService.getRobin(1).then((robin) => {
+      this.robinModel = robin;
+      this.robin = new RobinLabels(robin);
+    });
+    // this.robin = this.robinService.getRobin();
+    // this.result = this.robin.getResultLabel(this.decision);  
+  }
+
+
   submit() {
-    this.robinService.makeDecision(this.decision)
+    this.robinService.makeDecision(this.robinModel.id, this.decision)
       .then((result) => {
-       
+        // this.router.navigateByUrl('/panel');
+        this.showPopover(result);
       });
   }
 
-  setDecision(event: any) {
+  async showPopover(result: Result) {
+    const popover = await this.popoverController.create({
+      component: ResultComponent,
+      cssClass: 'my-custom-class',
+      translucent: true,
+      animated: true,
+      componentProps: { 'result': result }
+    });
+    await popover.present();
+
+    const { role } = await popover.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  setDecision(_event) {
     this.decision = new DecisionModel();
     this.decision.fatUsed = this.robinModel.fatTissue;
     this.decision.decision = this.decisionValue;
-    console.log(event);
     this.result = this.robin.getResultLabel(this.decision);
   }
 
