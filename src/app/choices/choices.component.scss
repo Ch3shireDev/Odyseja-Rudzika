@@ -37,11 +37,12 @@
 .decision {
   min-height: 200px;
   max-height: 600px;
-  margin:auto;
+  margin: auto;
 }
 
-.decision-container{
-  margin:auto;
+.decision-container {
+  margin: auto;
+  width: 80%;
 }
 
 ion-list {
@@ -51,4 +52,18 @@ ion-list {
 
 #decision-button {
   margin: auto;
+}
+
+.warning {
+  background: #dc3545;
+  color: white;
+  display: block;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.button-container {
+  width: 100%;
 }

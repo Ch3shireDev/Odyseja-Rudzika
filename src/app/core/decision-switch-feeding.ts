@@ -10,11 +10,11 @@ export class DecisionSwitchFeeding {
 
     getResult(): Result {
         if (this.robinModel.health !== Health.Healthy) {
-            return Result.Error(this.robinModel, "Rudzik musi być zdrowy, by mógl zmienić żerowisko!");
+            return Result.Error(this.robinModel, "Rudzik musi być zdrowy, by mógł zmienić żerowisko!");
         }
 
         if (this.robinModel.feedingGround === FeedingGround.Good) {
-            return Result.Error(this.robinModel, "Żerowisko jest już najlepsze jakie może być.");
+            return Result.Error(this.robinModel, "Żerowisko jest już najlepsze możliwe!");
         }
 
         const result = new Result(this.robinModel);

@@ -6,6 +6,10 @@ import { RobinModel } from "./robin-model";
 import { Config } from "../core/config";
 import { DecisionIntensiveFeeding } from "./decision-intensive-feeding";
 import { DecisionFitFeeding } from "./decision-fit-feeding";
+import { DecisionSwitchFeeding } from "./decision-switch-feeding";
+import { DecisionRecover } from "./decision-recover";
+import { LabelResult } from "./label-result";
+import { Decision } from "./decision";
 
 function toKm(distance: number, fixed = 1): string {
     return (distance / 1000).toFixed(fixed) + " km";
@@ -54,23 +58,10 @@ export class RobinLabels {
         return `${(decision.getResult().expectedDistance / 1000).toFixed(1)} km`;
     }
 
-    getIntensiveFeeding(): string {
-        const config = new Config();
-        const decisionModel = new DecisionModel();
-        decisionModel.decision = DecisionEnum.IntensiveFeeding;
-        let decision = new DecisionIntensiveFeeding(config, this.robinModel);
-        return decision.getResult().expectedResult;
-    }
-    getFitFeeding(): string {
-        const config = new Config();
-        let decision = new DecisionFitFeeding(config, this.robinModel);
-        return decision.getResult().expectedResult;
-    }
-    getSwitchFeeding(): string {
-        return "";
-    }
 
-    getRecover(): string {
-        return "";
+    getResultLabel(decision: DecisionModel) {
+        let config = new Config();
+        let result = new Decision(config,this.robinModel, decision).getResult();
+        return new LabelResult(result);
     }
 }

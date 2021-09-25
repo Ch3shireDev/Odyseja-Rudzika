@@ -32,7 +32,7 @@ export class Decision {
             return decision.getResult();
         }
         else if (this.decisionModel.decision === DecisionEnum.Recover) {
-            const decision = new DecisionRecover(this.config, this.robinModel, this.decisionModel);
+            const decision = new DecisionRecover(this.config, this.robinModel);
             return decision.getResult();
         }
 

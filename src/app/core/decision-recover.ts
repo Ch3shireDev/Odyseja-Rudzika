@@ -6,7 +6,7 @@ import { RobinModel } from "./robin-model";
 import { getWeather } from "./tools";
 
 export class DecisionRecover {
-    constructor(private config: Config, private robinModel: RobinModel, private decisionModel: DecisionModel) { }
+    constructor(private config: Config, private robinModel: RobinModel) { }
 
     getResult(): Result {
         if (this.robinModel.health !== Health.Injured) {
