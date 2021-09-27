@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { RobinService } from '../robin.service';
-import { RobinLabels } from '../core/robin-labels';
-import { DecisionEnum } from '../core/enums';
-import { DecisionLabels } from '../core/labels';
-import { RobinModel } from '../core/robin-model';
-import { LabelResult } from '../core/label-result';
-import { DecisionModel } from '../core/decision-model';
+import { RobinLabels } from '../../core/robin-labels';
+import { DecisionEnum } from '../../core/enums';
+import { DecisionLabels } from '../../core/labels';
+import { RobinModel } from '../../core/robin-model';
+import { ResultLabel } from '../../core/result-label';
+import { DecisionModel } from '../../core/decision-model';
 import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { ResultComponent } from './result/result.component';
-import { Result } from '../core/result';
+import { Result } from '../../core/result';
 
 @Component({
   selector: 'app-choices',
@@ -25,7 +25,7 @@ export class ChoicesComponent implements OnInit {
   decisionLabels = DecisionLabels;
   decision: DecisionModel;
   decisionValue: DecisionEnum;
-  public result: LabelResult;
+  result: ResultLabel;
   robinModel: RobinModel;
 
 
@@ -49,7 +49,6 @@ export class ChoicesComponent implements OnInit {
   submit() {
     this.robinService.makeDecision(this.robinModel.id, this.decision)
       .then((result) => {
-        // this.router.navigateByUrl('/panel');
         this.showPopover(result);
       });
   }
@@ -57,20 +56,18 @@ export class ChoicesComponent implements OnInit {
   async showPopover(result: Result) {
     const popover = await this.popoverController.create({
       component: ResultComponent,
-      cssClass: 'my-custom-class',
       translucent: true,
       animated: true,
       componentProps: { 'result': result }
     });
     await popover.present();
-
-    const { role } = await popover.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
+    await popover.onDidDismiss();
+    this.router.navigateByUrl('/panel');
   }
 
   setDecision(_event) {
     this.decision = new DecisionModel();
-    this.decision.fatUsed = this.robinModel.fatTissue;
+    this.decision.fatUsed = 2;
     this.decision.decision = this.decisionValue;
     this.result = this.robin.getResultLabel(this.decision);
   }

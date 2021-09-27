@@ -23,9 +23,13 @@ export class Result {
   public expectedDistance = 0;
   public feedingGround = FeedingGround.Medium;
   public skyscraperCollision = false;
-  public additionalMessage?: string;
   public expectedLocation?: Coordinates;
   public weather: WeatherModel;
+  public message?: string;
+  public dailyFatCost: number;
+  public starvation = false;
+  public fatBefore: number;
+  public fatAfter: number;
   public get isDead(): boolean {
     return this.health === Health.Dead;
   }

@@ -37,3 +37,7 @@ function getTemperature(): number {
     const random = Math.floor(Math.random() * (maxTemp - minTemp));
     return minTemp + random;
 }
+
+export function toKm(distance: number, fixed = 1): string {
+    return (distance / 1000).toFixed(fixed);
+}

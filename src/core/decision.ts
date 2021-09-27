@@ -15,27 +15,32 @@ export class Decision {
     }
 
     public getResult(): Result {
+        let result: Result;
         if (this.decisionModel.decision === DecisionEnum.IntensiveFeeding) {
-            const decision = new DecisionIntensiveFeeding(this.config, this.robinModel);
-            return decision.getResult();
+            result = new DecisionIntensiveFeeding(this.config, this.robinModel).getResult();
         }
         else if (this.decisionModel.decision === DecisionEnum.FitFeeding) {
-            const decision = new DecisionFitFeeding(this.config, this.robinModel);
-            return decision.getResult();
+            result = new DecisionFitFeeding(this.config, this.robinModel).getResult();
         }
         else if (this.decisionModel.decision === DecisionEnum.SwitchFeeding) {
-            const decision = new DecisionSwitchFeeding(this.config, this.robinModel);
-            return decision.getResult();
+            result = new DecisionSwitchFeeding(this.config, this.robinModel).getResult();
         }
         else if (this.decisionModel.decision === DecisionEnum.Fly) {
-            const decision = new DecisionFly(this.config, this.robinModel, this.decisionModel);
-            return decision.getResult();
+            result = new DecisionFly(this.config, this.robinModel, this.decisionModel).getResult();
         }
         else if (this.decisionModel.decision === DecisionEnum.Recover) {
-            const decision = new DecisionRecover(this.config, this.robinModel);
-            return decision.getResult();
+            result = new DecisionRecover(this.config, this.robinModel).getResult();
+        }
+        else {
+            return Result.Error(this.robinModel, "Błąd - brak zrozumiałej decyzji.");
         }
 
-        return Result.Error(this.robinModel, "Błąd - brak zrozumiałej decyzji.");
+        result.fatBefore = this.robinModel.fatTissue;
+        result.fatAfter = this.robinModel.fatTissue + result.fatGained - result.fatUsed - this.config.dailyFatCost;
+        if (result.fatAfter <= -1) {
+            result.starvation = true;
+        }
+
+        return result;
     }
 }

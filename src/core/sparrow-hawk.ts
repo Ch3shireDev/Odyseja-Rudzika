@@ -48,17 +48,21 @@ export class SparrowHawk {
         } else {
             sparrowHawkResult.health = Health.Healthy;
             sparrowHawkResult.attack = false;
+            sparrowHawkResult.message = `Atak krogulca nie wystąpił.`;
             return sparrowHawkResult;
         }
 
         const rand = Math.random();
 
-        if (rand > this.getSparrowHawkAttackSuccessFinalProbability(this.robinModel) || this.robinModel.turn == 1) {
+        if (rand > this.getSparrowHawkAttackSuccessFinalProbability(this.robinModel) || this.config.sparrowHawkInvincibilityTurns > this.robinModel.sparrowHawkAttacksSurvived) {
             sparrowHawkResult.health = Health.Healthy;
+            sparrowHawkResult.message = `Zaatakował cię krogulec! Atak był nieskuteczny.`;
         } else if (rand > sparrowHawkResult.deathChance) {
             sparrowHawkResult.health = Health.Injured;
+            sparrowHawkResult.message = `Zaatakował cię krogulec! Zostajesz ranny.`;
         } else {
             sparrowHawkResult.health = Health.Dead;
+            sparrowHawkResult.message = `Zaatakował cię krogulec! Zostajesz zabity.`;
         }
 
         return sparrowHawkResult;

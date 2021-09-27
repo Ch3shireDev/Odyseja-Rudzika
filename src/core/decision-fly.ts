@@ -8,7 +8,7 @@ import { SparrowHawk } from "./sparrow-hawk";
 import { Weather } from "./weather";
 import { WeatherBreakdown } from "./weather-breakdown";
 import { DecisionModel } from "./decision-model";
-import { getFeedingGround, getWeather } from "./tools";
+import { getFeedingGround, getWeather, toKm } from "./tools";
 import { Config } from "./config";
 
 export class DecisionFly {
@@ -44,7 +44,7 @@ export class DecisionFly {
         }
 
         if (this.robinModel.weather.windType === WindType.Hurricane) {
-            const windLabel = WindDirectionLabels.get(this.robinModel.weather.windDirection);
+            const windLabel = WindTypeLabels.get(this.robinModel.weather.windType);
             return Result.Error(this.robinModel, `Brak możliwości lotu: ${windLabel}`);
         }
 
@@ -105,6 +105,7 @@ export class DecisionFly {
             result.location = this.robinModel.currentLocation.add(result.distance, bearing);
             result.weatherBreakdown = true;
             result.fatUsed = weatherBreakdownResult.fatUsed;
+            result.message = `Załamanie pogody! Rudzik traci ${result.fatUsed} jednostek tłuszczu.`;
             return result;
         }
 
@@ -119,6 +120,7 @@ export class DecisionFly {
             result.mist = true;
             result.fatUsed = (this.config.flyFatCost + distanceInMist * this.config.flyFatEffectiveness);
             result.distance = distanceInMist;
+            result.message = `Błądzisz we mgle! Lecisz ${toKm(result.distance)} km w niewłaściwą stronę.`
             return result;
         }
 
@@ -132,9 +134,11 @@ export class DecisionFly {
             result.health = sparrowHawkResult.health;
             result.location = this.robinModel.currentLocation.add(result.distance, bearing);
             result.sparrowHawkAttack = true;
-            return result;
+            // result.message = result.sparrowHawk.message;
+            // return result;
         }
 
+        result.message = `Przelatujesz ${(result.distance/1000).toFixed(1)} kilometrów.`;
         return result;
     }
 }

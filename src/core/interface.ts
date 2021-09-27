@@ -37,7 +37,6 @@ export function getFlyFatDecision(): number {
     return value;
 }
 
-
 export function showStats(robinModel: RobinModel) {
     console.log(`Bieżąca data: ${robinModel.currentDate.toLocaleDateString("pl-PL")}`);
     console.log("");
@@ -68,15 +67,12 @@ export function showStats(robinModel: RobinModel) {
     console.log("");
 }
 
-
-
 export function showDecision(result: Result) {
     if (result.decision === undefined) return;
     const decision = DecisionLabels.get(result.decision);
     console.log(`Twoja decyzja to: ${decision}`);
     console.log("");
 }
-
 
 export function showAvailableOptions(): void {
     console.log("Decyzja:");
@@ -86,7 +82,6 @@ export function showAvailableOptions(): void {
     console.log("* 4 - Zmień żerowisko");
     console.log("* 5 - Ulecz rany");
 }
-
 
 export function getFatUsed(robinModel: RobinModel): number {
     const valueStr = prompt("Ile tłuszczu zamierzasz zużyć?");
@@ -151,11 +146,6 @@ export function showExpectedResult(result: Result) {
     }
 }
 
-
-export function showConditions(result: Result) {
-    console.log(`Uwarunkowania: ${result.conditions}`);
-}
-
 export function showResult(result: Result) {
     let flag = false;
 
@@ -172,8 +162,8 @@ export function showResult(result: Result) {
         flag = true;
     }
 
-    if (result.additionalMessage) {
-        console.log(result.additionalMessage);
+    if (result.message) {
+        console.log(result.message);
         flag = true;
     }
 
@@ -187,6 +177,7 @@ export function showMistResult(result: Result) {
 function toKm(distance: number, fixed = 1): string {
     return (distance / 1000).toFixed(fixed);
 }
+
 export function asPercent(value: number | undefined): string {
     if (typeof (value) === "undefined") return "0%";
     return `${(value * 100).toFixed(1)}%`;

@@ -2,7 +2,6 @@ import { Config, RainModDistance, RainModFeeding, WindModDistanceMatrix, WindMod
 import { WeatherModel } from "./weather-model";
 
 export class Weather {
-    // public weatherModel: WeatherModel;
 
     constructor(private config: Config, private weatherModel: WeatherModel) {
         this.weatherModel = weatherModel;
@@ -44,7 +43,7 @@ export class Weather {
     }
 
     public getTemperatureFeedingPenalty(temperature: number) {
-        if (temperature > 25 || temperature < 0) return -1;
+        if (temperature > 25 || temperature < 0) return 1;
         return 0;
     }
 

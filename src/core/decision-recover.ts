@@ -1,5 +1,4 @@
 import { Config } from "./config";
-import { DecisionModel } from "./decision-model";
 import { DecisionEnum, Health } from "./enums";
 import { Result } from "./result";
 import { RobinModel } from "./robin-model";
@@ -18,6 +17,7 @@ export class DecisionRecover {
         result.decision = DecisionEnum.Recover;
         result.newDay = true;
         result.weather = getWeather();
+        result.message = "Rudzik spędził dzień na odpoczynku i jest w pełni gotowy do dalszej drogi.";
         return result;
 
     }

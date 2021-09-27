@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject, SQLiteDatabaseConfig } from '@ionic-native/sqlite/ngx';
-import { RobinModel } from './core/robin-model';
+import { RobinModel } from '../core/robin-model';
 import { DecisionData } from './models/decision';
 
 

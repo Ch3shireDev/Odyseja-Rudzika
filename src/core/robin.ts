@@ -71,7 +71,6 @@ export class Robin {
         }
 
         if (this.robinModel.fatTissue <= this.config.minFatTissue) {
-            result.additionalMessage = "Rudzik ginie z głodu.";
             result.health = Health.Dead;
         }
     }

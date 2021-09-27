@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MapComponent } from './map.component';
 import { SQLite } from '@ionic-native/sqlite/ngx';
-import { DatabaseService } from '../database.service';
 
 
 const routes: Routes = [
@@ -21,7 +20,9 @@ export class MapRoutingModule { }
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MapComponent
+  ],
   imports: [
     CommonModule,
     MapRoutingModule,
@@ -30,6 +31,7 @@ export class MapRoutingModule { }
   providers:[
     SQLite,
     // DatabaseService
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MapModule { }

@@ -3,12 +3,8 @@ import { DecisionModel } from "./decision-model";
 import { DecisionEnum } from "./enums";
 import { FeedingGroundLabels, getRainLabel, getWindLabel, HealthLabel, SexLabels, WingTypeLabels } from "./labels";
 import { RobinModel } from "./robin-model";
-import { Config } from "../core/config";
-import { DecisionIntensiveFeeding } from "./decision-intensive-feeding";
-import { DecisionFitFeeding } from "./decision-fit-feeding";
-import { DecisionSwitchFeeding } from "./decision-switch-feeding";
-import { DecisionRecover } from "./decision-recover";
-import { LabelResult } from "./label-result";
+import { Config } from "./config";
+import { ResultLabel } from "./result-label";
 import { Decision } from "./decision";
 
 function toKm(distance: number, fixed = 1): string {
@@ -20,7 +16,6 @@ export class RobinLabels {
     constructor(public robinModel: RobinModel) { }
     public get sex(): string { return SexLabels.get(this.robinModel.sex); }
     public get wing(): string { return WingTypeLabels.get(this.robinModel.wingType); }
-    // public get (): string { return SexLabels.get(this.robinModel.sex); }
     public get name(): string { return this.robinModel.name; }
     public get date(): string { return this.robinModel.currentDate.toLocaleDateString("pl-PL"); }
     public get distanceMade(): string { return toKm(this.robinModel.distance); }
@@ -34,6 +29,7 @@ export class RobinLabels {
     public get wind(): string { return getWindLabel(this.robinModel.weather.windDirection, this.robinModel.weather.windType); }
     public get rain(): string { return getRainLabel(this.robinModel.weather.rainfall); }
     public get fat(): string { return this.robinModel.fatTissue.toFixed(1); }
+    public get fatNum(): number { return this.robinModel.fatTissue; }
     public get endDayFat(): string { return (this.robinModel.fatTissue - 1).toFixed(1); }
     public get feedingGround(): string { return FeedingGroundLabels.get(this.robinModel.feedingGround); }
     public get location(): string {
@@ -54,14 +50,14 @@ export class RobinLabels {
         const decisionModel = new DecisionModel();
         decisionModel.decision = DecisionEnum.Fly;
         decisionModel.fatUsed = flyFat;
-        let decision = new DecisionFly(config, this.robinModel, decisionModel);
+        const decision = new DecisionFly(config, this.robinModel, decisionModel);
         return `${(decision.getResult().expectedDistance / 1000).toFixed(1)} km`;
     }
 
 
     getResultLabel(decision: DecisionModel) {
-        let config = new Config();
-        let result = new Decision(config,this.robinModel, decision).getResult();
-        return new LabelResult(result);
+        const config = new Config();
+        const result = new Decision(config,this.robinModel, decision).getResult();
+        return new ResultLabel(result);
     }
 }

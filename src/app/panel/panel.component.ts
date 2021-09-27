@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RobinLabels } from '../core/robin-labels';
+import { RobinLabels } from '../../core/robin-labels';
 import { DatabaseService } from '../database.service';
 import { RobinService } from '../robin.service';
 

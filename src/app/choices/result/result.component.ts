@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavParams } from '@ionic/angular';
-import { Health } from 'src/app/core/enums';
-import { HealthLabel } from 'src/app/core/labels';
-import { Result } from '../../core/result';
+import { Health } from 'src/core/enums';
+import { HealthLabel } from 'src/core/labels';
+import { ResultLabel } from 'src/core/result-label';
 
 @Component({
   selector: 'app-result',
@@ -11,20 +11,16 @@ import { Result } from '../../core/result';
   styleUrls: ['./result.component.scss'],
 })
 export class ResultComponent implements OnInit {
-  result: Result;
+  result: ResultLabel;
   constructor(private navParams: NavParams, private router: Router) { }
 
   ngOnInit() {
     console.table(this.navParams);
-    this.result = this.navParams.data.result;
+    console.log(this.navParams.data.result)
+    this.result = new ResultLabel(this.navParams.data.result);
   }
 
   getHealthLabel(health: Health) {
     return HealthLabel.get(health);
   }
-
-  onDidDismiss() {
-    this.router.navigateByUrl('/panel');
-  }
-
 }

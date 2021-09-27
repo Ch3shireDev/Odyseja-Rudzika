@@ -37,6 +37,7 @@ export class DecisionIntensiveFeeding {
         result.newDay = true;
 
         const fatTotal = result.fatGained - result.fatUsed - this.config.dailyFatCost;
+        result.dailyFatCost = this.config.dailyFatCost;
 
         if (fatTotal > 0) {
             result.expectedResult = `Zwiększenie otłuszczenia do następnej rundy o +${fatTotal.toFixed(1)}`;
@@ -53,7 +54,7 @@ export class DecisionIntensiveFeeding {
         result.sparrowHawk = sparrowHawk;
         result.health = sparrowHawk.health;
         result.weather = getWeather();
-        result.feedingGround = this.robinModel.feedingGround;
+        result.feedingGround = this.robinModel.feedingGround; 
 
         return result;
     }

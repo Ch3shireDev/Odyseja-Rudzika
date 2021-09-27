@@ -25,10 +25,10 @@ export class DecisionSwitchFeeding {
         const newFeedingGround = getFeedingGround();
         if (newFeedingGround > result.feedingGround) {
             result.feedingGround = newFeedingGround;
-            result.additionalMessage = `Rudzik znalazł lepsze żerowisko. Nowe żerowisko to: ${FeedingGroundLabels.get(newFeedingGround)}`;
+            result.message = `Rudzik znalazł lepsze żerowisko. Nowe żerowisko to: ${FeedingGroundLabels.get(newFeedingGround)}`;
         }
         else {
-            result.additionalMessage = `Rudzikowi nie udało się znaleźć lepszego żerowiska.`;
+            result.message = `Rudzikowi nie udało się znaleźć lepszego żerowiska.`;
         }
         result.decision = DecisionEnum.SwitchFeeding;
         return result;
