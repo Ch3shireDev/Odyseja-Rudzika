@@ -25,7 +25,6 @@ export class MapComponent implements OnInit {
     });
 
     map.on('load', function () { map.resize(); })
-    // console.log('ok')
   }
 
 }

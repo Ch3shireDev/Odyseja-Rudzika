@@ -1,6 +1,6 @@
 import { DecisionFly } from "./decision-fly";
 import { DecisionModel } from "./decision-model";
-import { DecisionEnum } from "./enums";
+import { DecisionEnum, Health } from "./enums";
 import { FeedingGroundLabels, getRainLabel, getWindLabel, HealthLabel, SexLabels, WingTypeLabels } from "./labels";
 import { RobinModel } from "./robin-model";
 import { Config } from "./config";
@@ -32,6 +32,8 @@ export class RobinLabels {
     public get fatNum(): number { return this.robinModel.fatTissue; }
     public get endDayFat(): string { return (this.robinModel.fatTissue - 1).toFixed(1); }
     public get feedingGround(): string { return FeedingGroundLabels.get(this.robinModel.feedingGround); }
+    public get isDead(): boolean { return this.robinModel.health === Health.Dead; }
+    public get isAlive(): boolean { return !this.isDead; }
     public get location(): string {
         const lat = this.robinModel.currentLocation.latitude;
         const latA = Math.abs(this.robinModel.currentLocation.latitude);
@@ -57,7 +59,7 @@ export class RobinLabels {
 
     getResultLabel(decision: DecisionModel) {
         const config = new Config();
-        const result = new Decision(config,this.robinModel, decision).getResult();
+        const result = new Decision(config, this.robinModel, decision).getResult();
         return new ResultLabel(result);
     }
 }

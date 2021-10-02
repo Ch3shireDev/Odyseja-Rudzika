@@ -89,7 +89,8 @@
       </ion-col>
       <ion-col>
         <div class="img-container">
-          <ion-img src="assets/robin-remus.png"></ion-img>
+          <ion-img src="assets/robin-remus.png" *ngIf="!robin.isDead"></ion-img>
+          <ion-img src="assets/robin-remus-dead.png" *ngIf="robin.isDead"></ion-img>
         </div>
         <div class="category">
           <div class="category-header">Doświadczenie</div>

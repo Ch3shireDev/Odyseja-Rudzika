@@ -47,7 +47,9 @@ export class ChoicesComponent implements OnInit {
 
 
   submit() {
-    this.robinService.makeDecision(this.robinModel.id, this.decision)
+    let id = this.robinModel.id;
+    if (id === undefined) id = 1;
+    this.robinService.makeDecision(id, this.decision)
       .then((result) => {
         this.showPopover(result);
       });
@@ -72,7 +74,10 @@ export class ChoicesComponent implements OnInit {
     this.result = this.robin.getResultLabel(this.decision);
   }
 
-
+  async submitRestart() {
+    await this.robinService.restart();
+    this.router.navigateByUrl('/panel');
+  }
 
 
 }

@@ -10,6 +10,10 @@ import { DatabaseService } from './database.service';
   providedIn: 'root'
 })
 export class RobinService {
+  async restart() {
+    await this.database.dropDatabase();
+    await this.database.createDatabase();
+  }
 
   constructor(private database: DatabaseService) { }
 
@@ -20,10 +24,8 @@ export class RobinService {
     const result = robin.sendDecision(decision);
     if (result.success) {
       robin.setResult(result);
-      console.log(robinModel);
-      await this.database.updateRobin(id, robinModel);
+      await this.database.updateRobin(id, robin.robinModel);
     }
-    console.log(result);
     return new Promise<Result>((resolve, _) => {
       resolve(result);
     });

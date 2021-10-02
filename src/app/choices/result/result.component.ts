@@ -15,8 +15,6 @@ export class ResultComponent implements OnInit {
   constructor(private navParams: NavParams, private router: Router) { }
 
   ngOnInit() {
-    console.table(this.navParams);
-    console.log(this.navParams.data.result)
     this.result = new ResultLabel(this.navParams.data.result);
   }
 

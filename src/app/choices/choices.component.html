@@ -5,8 +5,14 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content *ngIf="robin">
-  <ion-grid>
+<ion-content>
+  <ion-grid *ngIf="robin && robin.isDead">
+    <ion-row class="row-center">
+      <p class="info-text">Rudzik zmarł. Czy chcesz zacząć grę od początku?</p>
+      <ion-button (click)="submitRestart()">Rozpocznij grę od początku</ion-button>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="robin && robin.isAlive">
     <ion-row>
       <ion-list>
         <ion-radio-group [(ngModel)]="decisionValue" (ionChange)="setDecision($event)">
@@ -53,7 +59,8 @@
       </div>
       <div class="slidecontainer decision-container" *ngIf="decision.decision === decisions.Fly">
         <p>Ilość tłuszczu do zużycia:</p>
-        <input #time type="range" min="2" [max]="robin.fatNum-1" [(ngModel)]="decision.fatUsed" class="slider" step="0.1">
+        <input #time type="range" min="2" [max]="robin.fatNum-1" [(ngModel)]="decision.fatUsed" class="slider"
+          step="0.1">
         <p>Użyj {{decision.fatUsed.toFixed(1)}} jednostek tłuszczu na {{(robin.fatNum-1).toFixed(1)}} możliwe.</p>
         <p>Przewidywana odległość: {{robin.getFlightDistance(decision.fatUsed)}}.</p>
       </div>
@@ -74,9 +81,9 @@
       </div>
     </ion-row>
     <ion-row class="ion-text-center" *ngIf="result?.success">
-    <ion-button class="primary" (click)="submit()" id="decision-button">
-      Podejmij decyzję i zakończ dzień
-    </ion-button>
+      <ion-button class="primary" (click)="submit()" id="decision-button">
+        Podejmij decyzję i zakończ dzień
+      </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>

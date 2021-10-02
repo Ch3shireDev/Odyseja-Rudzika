@@ -6,7 +6,7 @@ import { Decision } from "./decision";
 import { Config } from "./config";
 
 export class Robin {
-    public constructor(private config: Config, private robinModel:RobinModel) { }
+    public constructor(private config: Config, public robinModel: RobinModel) { }
     public get isDead(): boolean {
         return this.robinModel.health === Health.Dead;
     }
@@ -19,7 +19,7 @@ export class Robin {
     }
 
     setResult(result: Result) {
-        if (!result.success) {
+        if (!result.success || this.robinModel.health === Health.Dead) {
             return;
         }
 

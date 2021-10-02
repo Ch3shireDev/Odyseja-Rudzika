@@ -3,7 +3,7 @@ import { Direction, FeedingGround, Health, Sex, WingType } from "./enums";
 import { WeatherModel } from "./weather-model";
 
 export class RobinModel {
-    public id: number;
+    public id: number = 1;
     public name = "Remus";
     public sex: Sex = Sex.Male;
     public currentDate: Date = new Date("2021-09-01");

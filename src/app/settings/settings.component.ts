@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService } from '../database.service';
+import { Router } from '@angular/router';
+import { RobinService } from '../robin.service';
 
 @Component({
   selector: 'app-settings',
@@ -8,14 +9,13 @@ import { DatabaseService } from '../database.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor(private database: DatabaseService) { }
+  constructor(private robin: RobinService, private router: Router) { }
 
   ngOnInit() { }
 
-  submitReset() {
-    this.database.dropDatabase().then(
-      () => this.database.createDatabase()
-    )
+  async submitReset() {
+    await this.robin.restart();
+    this.router.navigateByUrl('/panel');
   }
 
 }

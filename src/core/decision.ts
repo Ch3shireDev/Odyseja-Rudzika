@@ -5,7 +5,7 @@ import { DecisionIntensiveFeeding } from "./decision-intensive-feeding";
 import { DecisionModel } from "./decision-model";
 import { DecisionRecover } from "./decision-recover";
 import { DecisionSwitchFeeding } from "./decision-switch-feeding";
-import { DecisionEnum } from "./enums";
+import { DecisionEnum, Health } from "./enums";
 import { Result } from "./result";
 import { RobinModel } from "./robin-model";
 
@@ -39,6 +39,7 @@ export class Decision {
         result.fatAfter = this.robinModel.fatTissue + result.fatGained - result.fatUsed - this.config.dailyFatCost;
         if (result.fatAfter <= -1) {
             result.starvation = true;
+            result.health = Health.Dead;
         }
 
         return result;
