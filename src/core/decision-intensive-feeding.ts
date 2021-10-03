@@ -46,7 +46,7 @@ export class DecisionIntensiveFeeding {
             result.expectedResult = `Brak zmiany otłuszczenia.`;
         }
         else {
-            result.expectedResult = `Spadek otłuszczenia o ${(-fatTotal.toFixed(1))}`;
+            result.expectedResult = `Spadek otłuszczenia o ${(-fatTotal.toFixed(1))}.`;
         }
 
         const sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();

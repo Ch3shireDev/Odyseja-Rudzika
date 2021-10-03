@@ -20,11 +20,11 @@ export class DecisionFly {
         }
 
         if (this.decisionModel.fatUsed === undefined) {
-            return Result.Error(this.robinModel, "Niepoprawna wartość tłuszczu.");
+            return Result.Error(this.robinModel, "Niepoprawna ilość tłuszczu.");
         }
 
         if (this.decisionModel.fatUsed > this.robinModel.fatTissue) {
-            return Result.Error(this.robinModel, "Niepoprawna wartość tłuszczu - przekracza bieżący tłuszcz rudzika.");
+            return Result.Error(this.robinModel, "Ilość tłuszczu potrzebnego do lotu przekracza bieżące zasoby rudzika.");
         }
 
         if (this.robinModel.fatTissue < this.config.minFlightFatTissue) {

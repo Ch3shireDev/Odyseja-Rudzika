@@ -2,4 +2,7 @@
   <ion-row class="ion-text-center">
     <p *ngFor="let message of result.message">{{message}}</p>
   </ion-row>
+  <ion-row>
+    <ion-button (click)="close()">Zamknij</ion-button>
+  </ion-row>
 </ion-grid>

@@ -1,8 +1,8 @@
 {
   "name": "robin-game",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "0.0.2-alpha",
+  "author": "Igor Nowicki",
+  "homepage": "https://github.com/Ch3shireDev",
   "scripts": {
     "ng": "ng",
     "run": "ionic cap run android --external --livereload",

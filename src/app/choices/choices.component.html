@@ -58,16 +58,19 @@
         <p><b>Przewidywany wynik:</b> {{result.expectedMessage}}</p>
       </div>
       <div class="slidecontainer decision-container" *ngIf="decision.decision === decisions.Fly">
-        <p>Ilość tłuszczu do zużycia:</p>
-        <input #time type="range" min="2" [max]="robin.fatNum-1" [(ngModel)]="decision.fatUsed" class="slider"
-          step="0.1">
-        <p>Użyj {{decision.fatUsed.toFixed(1)}} jednostek tłuszczu na {{(robin.fatNum-1).toFixed(1)}} możliwe.</p>
-        <p>Przewidywana odległość: {{robin.getFlightDistance(decision.fatUsed)}}.</p>
+        <div *ngIf="robin.canFly">
+          <p>Ilość tłuszczu do zużycia:</p>
+          <input #time type="range" min="2" [max]="robin.fatNum-1" [(ngModel)]="decision.fatUsed" class="slider"
+            step="0.1">
+          <p>Użyj {{decision.fatUsed.toFixed(1)}} jednostek tłuszczu na {{(robin.fatNum-1).toFixed(1)}} możliwe.</p>
+          <p>Przewidywana odległość: {{robin.getFlightDistance(decision.fatUsed)}}.</p>
+        </div>
+        <div *ngIf="!robin.canFly" class="warning">
+          {{result.errorMessage}}
+        </div>
       </div>
       <div *ngIf="decision.decision===decisions.SwitchFeeding" class="decision-container">
-
         <p>{{result.expectedMessage}}</p>
-
       </div>
       <div *ngIf="decision.decision===decisions.Recover" class="decision-container">
 

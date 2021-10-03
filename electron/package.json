@@ -1,14 +1,10 @@
 {
   "name": "robin-game",
-  "version": "1.0.0",
-  "description": "An Amazing Capacitor App",
+  "version": "0.0.1-alpha",
+  "description": "Wędrówka rudzikiem",
   "author": {
-    "name": "",
-    "email": ""
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
+    "name": "Igor Nowicki",
+    "email": "igor.nowicki.business@gmail.com"
   },
   "license": "MIT",
   "main": "build/src/index.js",

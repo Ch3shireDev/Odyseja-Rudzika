@@ -26,10 +26,14 @@ export class ResultLabel {
     }
 
     getFeedingMessage() {
-        if (this.result.fatGained > 0) {
-            this.message.push(`Zyskujesz ${this.result.fatGained.toFixed(1)} punktów tłuszczu.`);
+        const fatTotal = this.result.fatAfter-this.result.fatBefore;
+        if (fatTotal > 0) {
+            this.message.push(`Zyskujesz ${fatTotal.toFixed(1)} punktów tłuszczu.`);
         }
-        if (this.result.fatUsed > 0) {
+        else if(fatTotal == 0){
+            this.message.push(`Twoja ilość tłuszczu się nie zmienia.`);
+        }
+        else{
             this.message.push(`Tracisz ${this.result.fatUsed.toFixed(1)} punktów tłuszczu.`);
         }
     }

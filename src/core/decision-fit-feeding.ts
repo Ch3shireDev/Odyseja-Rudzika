@@ -25,6 +25,10 @@ export class DecisionFitFeeding {
         const weather = new Weather(this.config, this.robinModel.weather);
         result.fatUsed = weather.getWeatherPenalties() / 2;
         result.fatGained = (FatFromFeedingGround.get(this.robinModel.feedingGround) ?? 0) / 2;
+        if (result.fatGained - result.fatUsed > this.config.dailyFatCost) {
+            // Rudzik nie może uzyskać więcej tłuszczu niż zużyje danego dnia.
+            result.fatGained = this.config.dailyFatCost + result.fatUsed;
+        }
         result.weather = getWeather();
         result.sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
         result.sparrowHawkAttack = result.sparrowHawk.attack;
