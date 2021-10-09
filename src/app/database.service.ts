@@ -26,6 +26,7 @@ export class DatabaseService {
       let dict = JSON.parse(robinTxt);
       let robinModel = <RobinModel>dict;
       robinModel.currentDate = new Date(Date.parse(dict.currentDate));
+      robinModel.locations = robinModel.locations.map(loc => new Coordinates(loc.latitude, loc.longitude));
       robinModel.currentLocation = new Coordinates(robinModel.currentLocation.latitude, robinModel.currentLocation.longitude);
       robinModel.finalLocation = new Coordinates(robinModel.finalLocation.latitude, robinModel.finalLocation.longitude);
       return robinModel;

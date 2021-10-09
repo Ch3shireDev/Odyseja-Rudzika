@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { DatabaseService } from '../database.service';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { VictoryComponent } from './victory/victory.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ export class PanelRoutingModule { }
 
 
 @NgModule({
-  declarations: [PanelComponent],
+  declarations: [PanelComponent, VictoryComponent],
   imports: [
     CommonModule,
     RouterModule,

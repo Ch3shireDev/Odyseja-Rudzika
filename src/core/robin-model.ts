@@ -12,6 +12,7 @@ export class RobinModel {
     public wingType: WingType = WingType.Neutral;
     public feedingGround: FeedingGround = FeedingGround.Good;
     public directionType: Direction = Direction.Spain;
+    public locations: Coordinates[] = [new Coordinates(54.51, 18.42)];
     public currentLocation: Coordinates = new Coordinates(54.51, 18.42);
     public finalLocation: Coordinates = new Coordinates(36.12, -5.37);
     public sparrowHawkAttacksSurvived = 0;
@@ -25,5 +26,5 @@ export class RobinModel {
     public turn = 1;
     public numberOfSafeOverweightDays = 3;
     public overweightDay = 0;
-
+    public victory = false;
 }

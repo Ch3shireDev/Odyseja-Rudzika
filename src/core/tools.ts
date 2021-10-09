@@ -3,7 +3,7 @@ import { WeatherModel } from "./weather-model";
 
 export function getFeedingGround(): FeedingGround {
     const rand = Math.random();
-    if (rand < 0.1) return FeedingGround.VeryWeak;
+    if (rand < 0) return FeedingGround.VeryWeak;
     else if (rand < 0.25) return FeedingGround.Weak;
     else if (rand < 0.75) return FeedingGround.Medium;
     else return FeedingGround.Good;
@@ -18,20 +18,32 @@ export function getWeather(): WeatherModel {
     return weather;
 }
 
-function getWindType(): WindType {
-    const random = Math.floor(Math.random() * 6);
-    return random as WindType;
+export function getWindType(): WindType {
+    const random = Math.random();
+    if (random < 0.4) return WindType.None;
+    if (random < 0.5) return WindType.WeakWind;
+    if (random < 0.6) return WindType.MediumWind;
+    if (random < 0.8) return WindType.StrongWind;
+    if (random < 0.99) return WindType.VeryStrongWind;
+    return WindType.Hurricane;
 }
-function getWindDirection(): WindDirection {
+
+export function getWindDirection(): WindDirection {
     const random = Math.floor(Math.random() * 3);
     return random as WindDirection;
 }
-function getRainfall(): Rainfall {
-    const random = Math.floor(Math.random() * 6);
-    return random as Rainfall;
+
+export function getRainfall(): Rainfall {
+    const random = Math.random();
+    if (random < 0.3) return Rainfall.None;
+    if (random < 0.5) return Rainfall.Sprinkle;
+    if (random < 0.6) return Rainfall.LightRain;
+    if (random < 0.7) return Rainfall.ModerateRain;
+    if (random < 0.8) return Rainfall.HeavyRain;
+    return Rainfall.ViolentRain;
 }
 
-function getTemperature(): number {
+export function getTemperature(): number {
     const minTemp = -5;
     const maxTemp = 30;
     const random = Math.floor(Math.random() * (maxTemp - minTemp));

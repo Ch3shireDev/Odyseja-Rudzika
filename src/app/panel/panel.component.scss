@@ -21,7 +21,6 @@
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-
 .category {
   border: 1px solid rgba(0, 0, 0.5, 0.1);
   // margin:0.1rem;
@@ -40,17 +39,22 @@
   padding-bottom: 0.5rem;
 }
 
-tr{
+tr {
   line-height: 1.1rem;
 }
 
-.fill{
+.fill {
   width: 100%;
   min-height: 100px;
-  padding:0.5rem;
+  padding: 0.5rem;
   margin: 0 0.2rem;
 }
 
-.text-justify{
+.text-justify {
   text-align: justify;
+}
+
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
 }

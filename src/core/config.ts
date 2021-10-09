@@ -1,6 +1,5 @@
 import { FeedingGround, Rainfall, WindType, WingType } from "./enums";
 export class Config {
-
     sparrowHawkInvincibilityTurns = 3;
     // Szansa ataku krogulca.
     sparrowHawkAttackProbability = 0.5;

@@ -9,7 +9,13 @@
   <ion-grid *ngIf="robin && robin.isDead">
     <ion-row class="row-center">
       <p class="info-text">Rudzik zmarł. Czy chcesz zacząć grę od początku?</p>
-      <ion-button (click)="submitRestart()">Rozpocznij grę od początku</ion-button>
+      <ion-button (click)="submitRestart()">Rozpocznij grę</ion-button>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="robin && robin.victory">
+    <ion-row class="row-center">
+      <p class="info-text">Gra zakończona. Czy chcesz zacząć od początku?</p>
+      <ion-button (click)="submitRestart()">Rozpocznij grę</ion-button>
     </ion-row>
   </ion-grid>
   <ion-grid *ngIf="robin && robin.isAlive">
@@ -78,7 +84,7 @@
 
       </div>
     </ion-row>
-    <ion-row *ngIf="result && !result.success" class="decision">
+    <ion-row *ngIf="decisionValue && result && !result.success" class="decision">
       <div class="decision-container">
         <div class="warning">{{result.errorMessage}}</div>
       </div>

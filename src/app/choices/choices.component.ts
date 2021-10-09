@@ -28,7 +28,6 @@ export class ChoicesComponent implements OnInit {
   result: ResultLabel;
   robinModel: RobinModel;
 
-
   constructor(private robinService: RobinService, private router: Router,
     public popoverController: PopoverController
   ) { }
@@ -37,12 +36,13 @@ export class ChoicesComponent implements OnInit {
   }
 
   ionViewWillEnter() {
+    this.decisionValue = null;
+    this.decision = null;
+    this.result = null;
     this.robinService.getRobin(1).then((robin) => {
       this.robinModel = robin;
       this.robin = new RobinLabels(robin);
     });
-    // this.robin = this.robinService.getRobin();
-    // this.result = this.robin.getResultLabel(this.decision);  
   }
 
 
@@ -70,6 +70,7 @@ export class ChoicesComponent implements OnInit {
   setDecision(_event) {
     this.decision = new DecisionModel();
     this.decision.fatUsed = 2;
+    if (this.robin.fatNum < 2) this.decision.fatUsed = this.robin.fatNum;
     this.decision.decision = this.decisionValue;
     this.result = this.robin.getResultLabel(this.decision);
   }

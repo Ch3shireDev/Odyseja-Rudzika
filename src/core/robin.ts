@@ -12,10 +12,8 @@ export class Robin {
     }
 
     public sendDecision(decisionModel: DecisionModel): Result {
-
         const decision = new Decision(this.config, this.robinModel, decisionModel);
         return decision.getResult();
-
     }
 
     setResult(result: Result) {
@@ -29,6 +27,10 @@ export class Robin {
         this.robinModel.feedingGround = result.feedingGround;
         this.robinModel.currentLocation = result.location;
         this.robinModel.weather = result.weather;
+
+        if (result.distance > 0) {
+            this.robinModel.locations.push(result.location);
+        }
 
         if (result.newDay) {
             this.robinModel.currentDate.setDate(
@@ -64,7 +66,9 @@ export class Robin {
             this.robinModel.glassSkyscraperCollisions += 1;
         }
 
-        if (this.robinModel.fatTissue > this.config.maxFatTissue) this.robinModel.fatTissue = this.config.maxFatTissue;
+        if (this.robinModel.fatTissue > this.config.maxFatTissue) {
+            this.robinModel.fatTissue = this.config.maxFatTissue;
+        }
 
         if (result.health != null) {
             this.robinModel.health = result.health;
@@ -73,5 +77,10 @@ export class Robin {
         if (this.robinModel.fatTissue <= this.config.minFatTissue) {
             result.health = Health.Dead;
         }
+
+        const distance = this.robinModel.currentLocation.distanceTo(this.robinModel.finalLocation);
+        if (result.health === Health.Healthy && distance < 10) { 
+            this.robinModel.victory = true;
+         }
     }
 }

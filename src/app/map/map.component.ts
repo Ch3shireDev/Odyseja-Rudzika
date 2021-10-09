@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RobinService } from '../robin.service';
 
 declare var mapboxgl: any;
 
@@ -9,22 +10,43 @@ declare var mapboxgl: any;
 })
 export class MapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private robin: RobinService) { }
 
   ngOnInit() {
+  }
 
-    // TO MAKE THE MAP APPEAR YOU MUST
-    // ADD YOUR ACCESS TOKEN FROM
-    // https://account.mapbox.com
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY2gzc2hpcmUiLCJhIjoiY2tzeGZleHRqMDJnaDJwcDlla282cTJyNyJ9.IIin0Kdh7OrQ9Y4tyILxqg'
+  ionViewWillEnter() {
+    this.loadMap();
+  }
+
+  async loadMap() {
+    let robin = await this.robin.getRobin(1);
+    let coords = robin.currentLocation;
+    let goal = robin.finalLocation;
+    let lat = coords.latitude;
+    let long = coords.longitude;
+
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2gzc2hpcmUiLCJhIjoiY2tzeGZleHRqMDJnaDJwcDlla282cTJyNyJ9.IIin0Kdh7OrQ9Y4tyILxqg';
     const map = new mapboxgl.Map({
-      container: 'map', // container ID
-      style: 'mapbox://styles/mapbox/satellite-v9', // style URL
-      center: [21, 52], // starting position [lng, lat]
+      container: 'map',
+      style: 'mapbox://styles/mapbox/satellite-v9',
+      center: [long, lat],
       zoom: 3,
     });
 
-    map.on('load', function () { map.resize(); })
+    robin.locations.forEach(loc => {
+
+      new mapboxgl.Marker()
+        .setLngLat([loc.longitude, loc.latitude])
+        .addTo(map);
+
+    });
+
+    new mapboxgl.Marker({color:'green'})
+      .setLngLat([goal.longitude, goal.latitude])
+      .addTo(map);
+
+    map.on('load', function () { map.resize(); });
   }
 
 }
