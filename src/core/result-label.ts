@@ -34,7 +34,7 @@ export class ResultLabel {
             this.message.push(`Twoja ilość tłuszczu się nie zmienia.`);
         }
         else{
-            this.message.push(`Tracisz ${this.result.fatUsed.toFixed(1)} punktów tłuszczu.`);
+            this.message.push(`Tracisz ${(-fatTotal).toFixed(1)} punktów tłuszczu.`);
         }
     }
 }

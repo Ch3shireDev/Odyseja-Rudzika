@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { RobinService } from '../robin.service';
 
 declare var mapboxgl: any;
@@ -26,7 +27,7 @@ export class MapComponent implements OnInit {
     let lat = coords.latitude;
     let long = coords.longitude;
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY2gzc2hpcmUiLCJhIjoiY2tzeGZleHRqMDJnaDJwcDlla282cTJyNyJ9.IIin0Kdh7OrQ9Y4tyILxqg';
+    mapboxgl.accessToken = environment.access_token;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/satellite-v9',
@@ -42,7 +43,7 @@ export class MapComponent implements OnInit {
 
     });
 
-    new mapboxgl.Marker({color:'green'})
+    new mapboxgl.Marker({ color: 'green' })
       .setLngLat([goal.longitude, goal.latitude])
       .addTo(map);
 

@@ -79,8 +79,8 @@ export class Robin {
         }
 
         const distance = this.robinModel.currentLocation.distanceTo(this.robinModel.finalLocation);
-        if (result.health === Health.Healthy && distance < 10) { 
+        if (result.health === Health.Healthy && distance < 10) {
             this.robinModel.victory = true;
-         }
+        }
     }
 }

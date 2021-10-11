@@ -1,6 +1,6 @@
 {
   "name": "robin-game",
-  "version": "0.0.3-alpha",
+  "version": "0.0.4-alpha",
   "author": "Igor Nowicki",
   "homepage": "https://github.com/Ch3shireDev",
   "scripts": {
@@ -10,8 +10,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "run-electron": "ionic build ; npx cap sync @capacitor-community/electron ; npx cap open @capacitor-community/electron"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

@@ -12,6 +12,8 @@ import { MapModule } from './map/map.module';
 import { DatabaseService } from './database.service'; 
 import { LOCALE_ID } from '@angular/core';
 import { RobinService } from './robin.service';
+import { MapService } from './map.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,12 +21,14 @@ import { RobinService } from './robin.service';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     PanelModule,
     ChoicesModule,
-    MapModule
+    MapModule, 
+    HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   { provide: LOCALE_ID, useValue: 'pl' },
     DatabaseService,
-    RobinService
+    RobinService,
+    MapService
   ],
   bootstrap: [AppComponent],
 })

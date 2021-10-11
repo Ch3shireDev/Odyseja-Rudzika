@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { RobinLabels } from '../../core/robin-labels';
 import { DatabaseService } from '../database.service';
+import { MapService } from '../map.service';
 import { RobinService } from '../robin.service';
 import { VictoryComponent } from './victory/victory.component';
 
@@ -14,22 +15,26 @@ import { VictoryComponent } from './victory/victory.component';
 export class PanelComponent implements OnInit {
   public robin: RobinLabels;
   public decisions: { id: number, name: string; }[];
-
+  public location: string;
   constructor(
     private database: DatabaseService,
     private robinSerivce: RobinService,
     private popoverController: PopoverController,
-    private router: Router
+    private router: Router,
+    private map: MapService
   ) { }
 
   ngOnInit() {
   }
 
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     this.decisions = [];
     this.database.getDecisions().then(d => { this.decisions = d; });
-    this.robinSerivce.getRobin(1).then(robin => this.robin = new RobinLabels(robin));
-    if(this.robin.victory) this.showPopover();
+    const robin = await this.robinSerivce.getRobin(1);
+    this.robin = new RobinLabels(robin);
+    if (this.robin.victory) this.showPopover();
+    this.map.reverseGeocoding(this.robin.robinModel.currentLocation).subscribe(x => {this.location = x;});
+
   }
 
 

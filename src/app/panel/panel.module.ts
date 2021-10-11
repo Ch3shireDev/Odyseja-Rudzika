@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { DatabaseService } from '../database.service';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { VictoryComponent } from './victory/victory.component';
+import { MapModule } from '../map/map.module';
 
 
 const routes: Routes = [
@@ -29,7 +30,8 @@ export class PanelRoutingModule { }
     RouterModule,
     IonicModule,
     PanelRoutingModule,
-    RouterModule
+    RouterModule,
+    MapModule
   ],
   bootstrap: [PanelComponent],
   providers: [

@@ -1,5 +1,5 @@
 import { Rainfall, WindType, WindDirection, DecisionEnum, Health } from "./enums";
-import { getRainLabel, WindDirectionLabels, WindTypeLabels } from "./labels";
+import { getRainLabel, HealthLabel, WindDirectionLabels, WindTypeLabels } from "./labels";
 import { Mist } from "./mist";
 import { Result } from "./result";
 import { RobinModel } from "./robin-model";
@@ -91,6 +91,7 @@ export class DecisionFly {
             result.location = this.robinModel.currentLocation.add(result.distance, bearing);
             result.skyscraperCollision = true;
             result.fatUsed = (this.config.flyFatCost + result.distance / effectiveness);
+            result.message = `Uderzasz w szklany wieżowiec po przeleceniu ${toKm(result.distance)} km. Twój stan zdrowia to ${HealthLabel.get(result.health)}.`;
             return result;
         }
 
@@ -120,7 +121,7 @@ export class DecisionFly {
             result.mist = true;
             result.fatUsed = (this.config.flyFatCost + distanceInMist * this.config.flyFatEffectiveness);
             result.distance = distanceInMist;
-            result.message = `Błądzisz we mgle! Lecisz ${toKm(result.distance)} km w niewłaściwą stronę.`
+            result.message = `Błądzisz we mgle! Lecisz ${toKm(result.distance)} km w niewłaściwą stronę.`;
             return result;
         }
 
@@ -134,11 +135,9 @@ export class DecisionFly {
             result.health = sparrowHawkResult.health;
             result.location = this.robinModel.currentLocation.add(result.distance, bearing);
             result.sparrowHawkAttack = true;
-            // result.message = result.sparrowHawk.message;
-            // return result;
         }
 
-        result.message = `Przelatujesz ${(result.distance/1000).toFixed(1)} kilometrów.`;
+        result.message = `Przelatujesz ${(result.distance / 1000).toFixed(1)} kilometrów.`;
         return result;
     }
 }
