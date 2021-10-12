@@ -23,7 +23,7 @@ export function getWindType(): WindType {
     if (random < 0.4) return WindType.None;
     if (random < 0.5) return WindType.WeakWind;
     if (random < 0.6) return WindType.MediumWind;
-    if (random < 0.8) return WindType.StrongWind;
+    if (random < 0.95) return WindType.StrongWind;
     if (random < 0.99) return WindType.VeryStrongWind;
     return WindType.Hurricane;
 }
@@ -38,8 +38,8 @@ export function getRainfall(): Rainfall {
     if (random < 0.3) return Rainfall.None;
     if (random < 0.5) return Rainfall.Sprinkle;
     if (random < 0.6) return Rainfall.LightRain;
-    if (random < 0.7) return Rainfall.ModerateRain;
-    if (random < 0.8) return Rainfall.HeavyRain;
+    if (random < 0.95) return Rainfall.ModerateRain;
+    if (random < 0.99) return Rainfall.HeavyRain;
     return Rainfall.ViolentRain;
 }
 

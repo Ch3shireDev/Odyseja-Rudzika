@@ -4,17 +4,12 @@ Tekstowa wersja gry mobilnej.
 
 ## TODOs
 
-1. [x] Należy zaimplementować mechanikę ujemnego otłuszczenia. W przypadku wejścia na ujemny poziom otłuszczenia ilość zyskanego tłuszczu danego dnia powinna być dzielona na pół.
-2. [x] Zaktualizować deszcz w opisie.
-3. [x] Należy zaimplementować mechanikę wysokiego otłuszczenia. W przypadku wysokiego otłuszczenia (powyżej ustalonej wartości) utrzymywanego przez więcej niż określoną liczbę dni, powinna stopniowo zwiększać się szansa bycia upolowanym przez krogulca.
-4. [x] Należy zaimplementować odmienny mechanizm żerowania na utrzymanie kondycji - w tym wypadku szansa ataku przez krogulca wynosi inny procent (ustalmy że 25%).
-5. [x] Należy zaimplementować mechanizm lotu - gracz powinien podejmować wtedy decyzję, ile tłuszczu zamierza zużyć na lot. Dalej, należy zaimplementować przeszkody czyhające na rudzika na trasie lotu.
-6. [x] Należy zaimplementować przeszkodę: zderzenie ze szklanym wieżowcem. Taki wieżowiec jest jednokrotnym zdarzeniem, jest ustalone prawdopodobieństwo zderzenia (0.02%), 2/3 szansy na rany lub 1/3 szansy na śmierć. Po zderzeniu oszczędzany jest tłuszcz przeznaczony na resztę trasy, zdarzenie występuje tylko raz.
-7. [x] Należy zaimplementować przeszkodę: krogulec.
-8. [x] Należy zaimplementować przeszkodę: załamanie pogody. Powinno być ono ustalone losowo na odcinku trasy 50 km. Rudzik siada na 5-tym km obszaru załamania pogody, traci 3 jednostki tłuszczu, jednak zachowuje tłuszcz przeznaczony na dalszą podróż. W tym ruchu nie może zmienić żerowiska. Rudzik zyskuje doświadczenie z przeżytych załamań pogody, przy każdym kolejnym traci o jedną jednostkę tłuszczu mniej.
-9. [x] Należy zaimplementować przeszkodę: mgła. Rudzik traci orientację i zbacza z właściwej trasy. Powrót na trasę kosztuje go dodatkowe 100 km w następnych rundach. Mgła występuje dwa razy na odcinku 50 km na każdej trasie. Rudzik zmniejsza dwukrotnie liczbę kilometrów do nadrobienia po każdej przebytej mgle.
-10. [ ] Należy zaimplementować mechanizm przewidywania pogody na najbliższe dni.
-11. [ ] Należy zaimplementować mechanizm przekraczania barier w trakcie wędrówki.
+1. [ ] Należy zaimplementować mechanizm przewidywania pogody na najbliższe dni.
+2. [ ] Należy zaimplementować mechanizm przekraczania barier w trakcie wędrówki.
+3. [ ] Jeśli nie jest możliwe intensywne żerowanie (z powodu ran), to nie pokazuje się komunikat na czerwonym pasku. Po zaznaczeniu opcji nic się nie dzieje.
+4. [ ] Żerowanie na utrzymanie kondycji nie może dawać lepszych rezultatów (wyższego tłuszczu) niż żerowanie intensywne. Czyli w złych warunkach pogodowych, żerując na utrzymanie kondycji, traci się identycznie jak na żerowaniu intensywnym.
+5. [x] Wiem, że pogoda jest na razie całkiem losowa i że bardziej realne warunki pogodowe będą w wersji końcowej. Ale warunki skrajnie niekorzystne są za często co zmniejsza radość z gry (i jest przy okazji nie prawdziwe). Czy można by już na tym etapie ograniczyć częstość występowania intensywnego opadu i bardzo silnego wiatru.
+6. [ ] W zakładce Panel dodał bym rokowania co do ataku krogulca w stylu: brak ataku 50%, atak nieskuteczny 35%, rudzik ranny 10%, rudzik ginie 5%. Bo tak ataki są nie wiadomo skąd.
 
 ## Emotki
 
