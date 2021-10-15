@@ -43,9 +43,7 @@ export class SparrowHawk {
 
         const rand2 = Math.random();
 
-        if (rand2 < this.robinModel.sparrowHawkAttackProbability) {
-            sparrowHawkResult.attack = true;
-        } else {
+        if (rand2 > this.robinModel.sparrowHawkAttackProbability) {
             sparrowHawkResult.health = Health.Healthy;
             sparrowHawkResult.attack = false;
             sparrowHawkResult.message = `Atak krogulca nie wystąpił.`;
@@ -65,6 +63,7 @@ export class SparrowHawk {
             sparrowHawkResult.message = `Zaatakował cię krogulec! Zostajesz zabity.`;
         }
 
+        sparrowHawkResult.attack = true;
         return sparrowHawkResult;
     }
 

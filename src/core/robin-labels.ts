@@ -34,7 +34,7 @@ export class RobinLabels {
     public get feedingGround(): string { return FeedingGroundLabels.get(this.robinModel.feedingGround); }
     public get isDead(): boolean { return this.robinModel.health === Health.Dead; }
     public get isAlive(): boolean { return !this.isDead; }
-    public get canFly(): boolean { return this.fatNum >= 2; }
+    public get canFly(): boolean { return this.fatNum >= 3; }
     public get turn(): number { return this.robinModel.turn; }
     public get victory(): boolean { return this.robinModel.victory; }
     public get location(): string {

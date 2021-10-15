@@ -30,10 +30,13 @@ export class DecisionFitFeeding {
             result.fatGained = this.config.dailyFatCost + result.fatUsed;
         }
         result.weather = getWeather();
-        result.sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
-        result.sparrowHawkAttack = result.sparrowHawk.attack;
         result.feedingGround = this.robinModel.feedingGround;
-        result.health = result.sparrowHawk.health;
+        const sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
+        result.sparrowHawkAttack = result.sparrowHawk.attack;
+        if (result.sparrowHawkAttack) {
+            result.sparrowHawk = sparrowHawk;
+            result.health = result.sparrowHawk.health;
+        }
         return result;
     }
 }

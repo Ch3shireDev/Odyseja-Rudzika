@@ -1,7 +1,8 @@
-import subprocess
+
 import paramiko
 from scp import SCPClient
 import json
+import os
 
 
 def createSSHClient(server, port, user, password):
@@ -12,11 +13,6 @@ def createSSHClient(server, port, user, password):
     return client
 
 
-def run(command):
-    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-    process.wait()
-    return process.returncode
-
 
 def ssh_exec(cmd):
     print(cmd)
@@ -24,11 +20,11 @@ def ssh_exec(cmd):
     print('success!')
 
 
-print("building project...")
-run('ionic build --prod')
-print("build complete")
-run('zip -r robin.zip ./www')
-print("zip complete")
+# print("building project...")
+# os.system('ionic build --prod')
+# print("build complete")
+# os.system('zip -r robin.zip ./www')
+# print("zip complete")
 
 data = json.load(open('password.json'))
 

@@ -13,7 +13,7 @@ export class DecisionIntensiveFeeding {
 
     public getResult(): Result {
         if (this.robinModel.health !== Health.Healthy) {
-            return Result.Error(this.robinModel, "Rudzik musi być zdrowy, by mógł żerować.");
+            return Result.Error(this.robinModel, "Rudzik musi być zdrowy by mógł żerować!");
         }
 
         const result = new Result(this.robinModel);
@@ -51,10 +51,12 @@ export class DecisionIntensiveFeeding {
 
         const sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
         result.sparrowHawkAttack = sparrowHawk.attack;
-        result.sparrowHawk = sparrowHawk;
-        result.health = sparrowHawk.health;
+        if (sparrowHawk.attack) {
+            result.sparrowHawk = sparrowHawk;
+            result.health = sparrowHawk.health;
+        }
         result.weather = getWeather();
-        result.feedingGround = this.robinModel.feedingGround; 
+        result.feedingGround = this.robinModel.feedingGround;
 
         return result;
     }
