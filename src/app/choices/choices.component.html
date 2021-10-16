@@ -84,7 +84,7 @@
 
       </div>
     </ion-row>
-    <ion-row *ngIf="decisionValue !== undefined && result && !result.success" class="decision">
+    <ion-row *ngIf="decisionValue !== undefined && decisionValue !== null && result && !result.success" class="decision">
       <div class="decision-container">
         <div class="warning">{{result.errorMessage}}</div>
       </div>

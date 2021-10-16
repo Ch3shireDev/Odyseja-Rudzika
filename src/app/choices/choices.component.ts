@@ -73,6 +73,7 @@ export class ChoicesComponent implements OnInit {
     if (this.robin.fatNum < 2) this.decision.fatUsed = this.robin.fatNum;
     this.decision.decision = this.decisionValue;
     this.result = this.robin.getResultLabel(this.decision);
+    console.log(this.result)
   }
 
   async submitRestart() {

@@ -32,11 +32,9 @@ export class DecisionFitFeeding {
         result.weather = getWeather();
         result.feedingGround = this.robinModel.feedingGround;
         const sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
+        result.sparrowHawk = sparrowHawk;
         result.sparrowHawkAttack = result.sparrowHawk.attack;
-        if (result.sparrowHawkAttack) {
-            result.sparrowHawk = sparrowHawk;
-            result.health = result.sparrowHawk.health;
-        }
+        if (result.sparrowHawkAttack) result.health = result.sparrowHawk.health;
         return result;
     }
 }

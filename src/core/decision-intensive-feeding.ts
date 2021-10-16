@@ -51,6 +51,7 @@ export class DecisionIntensiveFeeding {
 
         const sparrowHawk = new SparrowHawk(this.config, this.robinModel, result.decision).getSparrowHawkAttackResult();
         result.sparrowHawkAttack = sparrowHawk.attack;
+        result.sparrowHawk = sparrowHawk;
         if (sparrowHawk.attack) {
             result.sparrowHawk = sparrowHawk;
             result.health = sparrowHawk.health;
