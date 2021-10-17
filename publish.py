@@ -26,4 +26,4 @@ ssh = createSSHClient(server, port, user, password)
 scp = SCPClient(ssh.get_transport())
 scp.put('robin.zip', '~/robin.zip')
 
-ssh_exec('./script.sh')
+# ssh_exec('./script.sh')

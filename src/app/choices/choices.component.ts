@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { ResultComponent } from './result/result.component';
 import { Result } from '../../core/result';
+import { Config } from 'src/core/config';
 
 @Component({
   selector: 'app-choices',
@@ -27,10 +28,13 @@ export class ChoicesComponent implements OnInit {
   decisionValue: DecisionEnum;
   result: ResultLabel;
   robinModel: RobinModel;
+  config: Config;
 
   constructor(private robinService: RobinService, private router: Router,
     public popoverController: PopoverController
-  ) { }
+  ) { 
+    this.config = new Config();
+  }
 
   ngOnInit() {
   }

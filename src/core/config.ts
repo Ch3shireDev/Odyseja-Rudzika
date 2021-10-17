@@ -22,7 +22,7 @@ export class Config {
     // Temperatura powyżej której niemożliwy jest lot.
     maxFlightTemperature = 25;
     // Poziom tkanki tłuszczowej poniżej której niemożliwy jest start do lotu.
-    minFlightFatTissue = 2;
+    minFlightFatTissue = 3;
     // Szansa zderzenia ze szklanym drapaczem chmur.
     skyscraperCollisionProbability = 0.0002;
     // Szansa śmierci w przypadku zderzenia z drapaczem chmur.

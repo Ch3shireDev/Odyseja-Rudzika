@@ -42,6 +42,7 @@ export class Decision {
             result.health = Health.Dead;
         }
 
+        console.log(result);
         return result;
     }
 }
